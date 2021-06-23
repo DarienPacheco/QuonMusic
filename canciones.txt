@@ -1,0 +1,14 @@
+1, Ambitionz az a ridah, 2Pac, Rap, HipHop, 1
+2, Dancing queen, ABBA, Pop, Disco, 1
+3, Gimme gimme gimme!, ABBA, Pop, Disco, 1
+4, Someone like you, Adele, Soul, Pop, 1
+5, Hello, Adele, Soul, Pop, 1
+6, I don’t to miss a thing, Aerosmith, Power ballad, rock, 1
+7, Dream on, Aerosmith, Hard rock, Progressive rock, 1
+8, Take on me, A-ha, Synth pop, New wave, 1
+9, Forever young, Alphaville, Power ballad, New wave, 1
+10, Big in Japan, Alphaville, Synth pop, New wave, 1
+11, Back to black, Amy Winehouse, R&B, Soul, 1
+12, Rehab, Amy Winehouse, R&B, Soul, 1
+13, Can’t get enough of your love babe, Soul, Disco, 1
+14, Bela Lugosi’s dead, Bauhaus, Post-punk, Gothic, 1
