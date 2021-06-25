@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1624590372 source:c:\users\jefte\documents\github\quonmusic\main.c
+	<stdio.h>
+	<stdlib.h>
+
