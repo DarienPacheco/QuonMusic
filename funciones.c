@@ -45,3 +45,60 @@ const char *get_csv_field (char * tmp, int k) {
 
     return NULL;
 }
+
+void *crearUsuario(char *linea){
+
+    tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
+
+    usuario->nombre = get_csv_field(linea, 0);
+	usuario->contrasena = get_csv_field(linea, 1);
+
+	return usuario;
+
+}
+
+void llenarBD(/**Map *mapaCanciones, Map *mapaArtista, Map *mapaGenero,**/Map* mapaUsuario){
+
+    FILE *archivo;
+    char linea[1001];
+
+    //LEER DATOS PARA MAPA DE USUARIOS.
+
+    tipoUsuario *datoUsuario;
+
+    archivo = fopen("usuarios.txt","r");
+    if(archivo == NULL)
+    {
+        printf("ERROR AL ABRIR EL ARCHIVO\n");
+        ExitProcess(1);
+    }
+
+    while(fgets(linea, 1000, archivo)!= NULL)
+    {
+        datoUsuario = crearUsuario(linea);
+        insertMap(mapaUsuario, datoUsuario->nombre, datoUsuario);
+    }
+
+    fclose(archivo);
+
+}
+
+mostrarMapaUsuario(Map* mapa){
+
+    tipoUsuario* datoUsuario = (tipoUsuario*) malloc(sizeof(tipoUsuario));
+
+    datoUsuario = firstMap(mapa);
+
+    while( datoUsuario != NULL ){
+
+
+        printf("%s \n", datoUsuario->nombre);
+        printf("%s \n", datoUsuario->contrasena);
+        printf("\n");
+
+
+        datoUsuario = nextMap(mapa);
+
+    }
+
+}
