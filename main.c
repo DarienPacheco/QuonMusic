@@ -162,7 +162,8 @@ int main(){
 
                         }
 
-                        break;
+                        if (opMenu == 7) break;
+                        //break;
 
 
                     }

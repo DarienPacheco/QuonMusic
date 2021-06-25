@@ -36,7 +36,7 @@ typedef struct{
 typedef struct{
 
     char *nombre;
-    //list *canciones;
+    list *listaCanciones;
 
 }tipoGenero;
 

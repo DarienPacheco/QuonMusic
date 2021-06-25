@@ -77,7 +77,7 @@ void *crearArtista(char *linea){
     tipoArtista *artista = (tipoArtista*) malloc (sizeof(tipoArtista));
 
     artista->nombre = get_csv_field(linea, 0);
-    artista->genero =get_csv_field(linea, 1);
+    artista->genero = get_csv_field(linea, 1);
     artista->subgenero = get_csv_field(linea, 2);
 
     return artista;
@@ -89,7 +89,7 @@ void *crearGenero(char *linea){
     tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
 
     genero->nombre = get_csv_field(linea, 0);
-
+    genero->listaCanciones = list_create(genero->listaCanciones);
     return genero;
 
 }
@@ -181,7 +181,7 @@ void mostrarMapaUsuario(Map* mapa){
     tipoUsuario* datoUsuario = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
     datoUsuario = firstMap(mapa);
-    printf("Mapa de Usuarios y contrasenas\n");
+    printf("-----Mapa de Usuarios y contrasenas-----\n");
 
     while( datoUsuario != NULL ){
 
@@ -193,6 +193,7 @@ void mostrarMapaUsuario(Map* mapa){
         datoUsuario = nextMap(mapa);
 
     }
+    printf("\n");
 
     free(datoUsuario);
 }
@@ -202,7 +203,7 @@ void mostrarMapaCanciones(Map* mapa){
     tipoCancion* datoCancion = (tipoCancion*) malloc(sizeof(tipoCancion));
 
     datoCancion = firstMap(mapa);
-    printf("Mapa de canciones\n");
+    printf("-----Mapa de canciones-----\n");
 
     while( datoCancion != NULL ){
 
@@ -218,6 +219,7 @@ void mostrarMapaCanciones(Map* mapa){
         datoCancion = nextMap(mapa);
 
     }
+    printf("\n");
     free(datoCancion);
 }
 
@@ -226,7 +228,7 @@ void mostrarMapaArtista(Map* mapa){
     tipoArtista* datoArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
 
     datoArtista = firstMap(mapa);
-    printf("Mapa de Artistas\n");
+    printf("-----Mapa de Artistas-----\n");
 
     while( datoArtista != NULL ){
 
@@ -239,6 +241,7 @@ void mostrarMapaArtista(Map* mapa){
 
     }
 
+    printf("\n");
     free(datoArtista);
 }
 
@@ -247,7 +250,7 @@ void mostrarMapaGenero(Map* mapa){
     tipoGenero* datoGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
 
     datoGenero = firstMap(mapa);
-    printf("Mapa de Generos\n");
+    printf("-----Mapa de Generos-----\n");
 
     while( datoGenero != NULL ){
 
@@ -258,5 +261,6 @@ void mostrarMapaGenero(Map* mapa){
 
     }
 
+    printf("\n");
     free(datoGenero);
 }
