@@ -17,18 +17,18 @@
 
 1620605619 c:\users\pablo\desktop\quonmusic\map.h
 
-1624597198 source:c:\users\pablo\desktop\quonmusic\main.c
+1624646289 source:c:\users\pablo\desktop\quonmusic\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 	"list.h"
 	"map.h"
 
-1624597628 c:\users\pablo\desktop\quonmusic\funciones.h
+1624645950 c:\users\pablo\desktop\quonmusic\funciones.h
 	"map.h"
 	"list.h"
 
-1624597286 source:c:\users\pablo\desktop\quonmusic\funciones.c
+1624645996 source:c:\users\pablo\desktop\quonmusic\funciones.c
 	"list.h"
 	"funciones.h"
 	"map.h"

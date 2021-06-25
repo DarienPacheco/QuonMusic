@@ -57,7 +57,34 @@ void *crearUsuario(char *linea){
 
 }
 
-void llenarBD(/**Map *mapaCanciones, Map *mapaArtista, Map *mapaGenero,**/Map* mapaUsuario){
+void *crearCancion(char *linea){
+
+    tipoCancion *cancion = (tipoCancion*) malloc (sizeof(tipoCancion));
+
+    cancion->id = get_csv_field(linea, 0);
+	cancion->nombre = get_csv_field(linea, 1);
+	cancion->artista = get_csv_field(linea, 2);
+	cancion->genero = get_csv_field(linea, 3);
+	cancion->subgenero = get_csv_field(linea, 4);
+	cancion->puntaje = get_csv_field(linea, 5);
+
+	return cancion;
+
+}
+
+void *crearArtista(char *linea){
+
+    tipoArtista *artista = (tipoArtista*) malloc (sizeof(tipoArtista));
+
+    artista->nombre = get_csv_field(linea, 0);
+    artista->genero =get_csv_field(linea, 1);
+    artista->subgenero = get_csv_field(linea, 2);
+
+    return artista;
+
+}
+
+void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista){
 
     FILE *archivo;
     char linea[1001];
@@ -81,16 +108,53 @@ void llenarBD(/**Map *mapaCanciones, Map *mapaArtista, Map *mapaGenero,**/Map* m
 
     fclose(archivo);
 
+    //LEER DATOS PARA MAPA DE CANCIONES.
+
+    tipoCancion *datoCancion;
+
+    archivo = fopen("canciones.txt","r");
+    if(archivo == NULL)
+    {
+        printf("ERROR AL ABRIR EL ARCHIVO\n");
+        ExitProcess(1);
+    }
+
+    while(fgets(linea, 1000, archivo)!= NULL)
+    {
+        datoCancion = crearCancion(linea);
+        insertMap(mapaCanciones, datoCancion->id, datoCancion);
+    }
+
+    fclose(archivo);
+
+    //LEER LOS DATOS PARA EL MAPA ARTISTAS
+
+    tipoArtista *datoArtista;
+
+    archivo = fopen("artista.txt","r");
+    if(archivo == NULL)
+    {
+        printf("ERROR AL ABRIR EL ARCHIVO\n");
+        ExitProcess(1);
+    }
+
+    while(fgets(linea, 1000, archivo)!= NULL)
+    {
+        datoArtista = crearArtista(linea);
+        insertMap(mapaArtista, datoArtista->nombre, datoArtista);
+    }
+
+    fclose(archivo);
 }
 
-mostrarMapaUsuario(Map* mapa){
+void mostrarMapaUsuario(Map* mapa){
 
     tipoUsuario* datoUsuario = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
     datoUsuario = firstMap(mapa);
+    printf("Mapa de Usuarios y contrasenas\n");
 
     while( datoUsuario != NULL ){
-
 
         printf("%s \n", datoUsuario->nombre);
         printf("%s \n", datoUsuario->contrasena);
@@ -101,4 +165,50 @@ mostrarMapaUsuario(Map* mapa){
 
     }
 
+    free(datoUsuario);
+}
+
+void mostrarMapaCanciones(Map* mapa){
+
+    tipoCancion* datoCancion = (tipoCancion*) malloc(sizeof(tipoCancion));
+
+    datoCancion = firstMap(mapa);
+    printf("Mapa de canciones\n");
+
+    while( datoCancion != NULL ){
+
+        printf("%s \n", datoCancion->id);
+        printf("%s \n", datoCancion->nombre);
+        printf("%s \n", datoCancion->artista);
+        printf("%s \n", datoCancion->genero);
+        printf("%s \n", datoCancion->subgenero);
+        printf("%s \n", datoCancion->puntaje);
+        printf("\n");
+
+
+        datoCancion = nextMap(mapa);
+
+    }
+    free(datoCancion);
+}
+
+void mostrarMapaArtista(Map* mapa){
+
+    tipoArtista* datoArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
+
+    datoArtista = firstMap(mapa);
+    printf("Mapa de Artistas\n");
+
+    while( datoArtista != NULL ){
+
+        printf("%s \n", datoArtista->nombre);
+        printf("%s \n", datoArtista->genero);
+        printf("%s \n", datoArtista->subgenero);
+        printf("\n");
+
+        datoArtista = nextMap(mapa);
+
+    }
+
+    free(datoArtista);
 }

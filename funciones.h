@@ -7,9 +7,9 @@ typedef struct{
 
     char *nombre;
     char *contrasena;
-    list *canciones_favoritas; //esto deberia ser una lista
-    list *artistas_favoritos;
-    list *generos_favoritos;
+    //list *canciones_favoritas; //esto deberia ser una lista
+    //list *artistas_favoritos;
+    //list *generos_favoritos;
 
 }tipoUsuario;
 
@@ -42,8 +42,11 @@ typedef struct{
 
 const char *get_csv_field (char * tmp, int k);
 
-void llenarBD(Map */*, Map *, Map *, Map **/);
+void llenarBD(Map *, Map *, Map */*, Map **/);
 
 void mostrarMapaUsuario(Map*);
 
+void mostrarMapaCanciones(Map*);
+
+void mostrarMapaArtista(Map*);
 #endif

@@ -51,8 +51,10 @@ int main(){
     Map *mapaGenero = createMap(is_equal_string);
     Map *mapaUsuario = createMap(is_equal_string);
 
-    llenarBD(mapaUsuario);
-    mostrarMapaUsuario(mapaUsuario);
+    llenarBD(mapaUsuario, mapaCanciones, mapaArtista);
+    mostrarMapaUsuario(mapaCanciones);
+    mostrarMapaCanciones(mapaUsuario);
+    mostrarMapaArtista(mapaArtista);
 
     while(1){//Muestra el menu
 

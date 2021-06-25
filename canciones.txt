@@ -10,5 +10,5 @@
 10, Big in Japan, Alphaville, Synth pop, New wave, 1
 11, Back to black, Amy Winehouse, R&B, Soul, 1
 12, Rehab, Amy Winehouse, R&B, Soul, 1
-13, Can’t get enough of your love babe, Soul, Disco, 1
-14, Bela Lugosi’s dead, Bauhaus, Post-punk, Gothic, 1
+13, Can’t get enough of your love babe,DARIEN, Soul, Disco, 1
+14, Bela Lugosi’s dead, Bauhaus, Post-punk, Gothic,1
