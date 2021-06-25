@@ -84,7 +84,17 @@ void *crearArtista(char *linea){
 
 }
 
-void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista){
+void *crearGenero(char *linea){
+
+    tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
+
+    genero->nombre = get_csv_field(linea, 0);
+
+    return genero;
+
+}
+
+void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaGenero){
 
     FILE *archivo;
     char linea[1001];
@@ -142,6 +152,25 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista){
     {
         datoArtista = crearArtista(linea);
         insertMap(mapaArtista, datoArtista->nombre, datoArtista);
+    }
+
+    fclose(archivo);
+
+    //LEER LOS DATOS PARA EL MAPA GENEROS
+
+    tipoGenero *datoGenero;
+
+    archivo = fopen("genero.txt","r");
+    if(archivo == NULL)
+    {
+        printf("ERROR AL ABRIR EL ARCHIVO\n");
+        ExitProcess(1);
+    }
+
+    while(fgets(linea, 1000, archivo)!= NULL)
+    {
+        datoGenero = crearGenero(linea);
+        insertMap(mapaGenero, datoGenero->nombre, datoGenero);
     }
 
     fclose(archivo);
@@ -211,4 +240,23 @@ void mostrarMapaArtista(Map* mapa){
     }
 
     free(datoArtista);
+}
+
+void mostrarMapaGenero(Map* mapa){
+
+    tipoGenero* datoGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
+
+    datoGenero = firstMap(mapa);
+    printf("Mapa de Generos\n");
+
+    while( datoGenero != NULL ){
+
+        printf("%s \n", datoGenero->nombre);
+        printf("\n");
+
+        datoGenero = nextMap(mapa);
+
+    }
+
+    free(datoGenero);
 }

@@ -42,11 +42,13 @@ typedef struct{
 
 const char *get_csv_field (char * tmp, int k);
 
-void llenarBD(Map *, Map *, Map */*, Map **/);
+void llenarBD(Map *, Map *, Map *, Map *);
 
 void mostrarMapaUsuario(Map*);
 
 void mostrarMapaCanciones(Map*);
 
 void mostrarMapaArtista(Map*);
+
+void mostrarMapaGenero(Map*);
 #endif
