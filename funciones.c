@@ -50,8 +50,8 @@ void *crearUsuarioCSV(char *linea){
 
     tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
-    usuario->nombre = get_csv_field(linea, 0);
-	usuario->contrasena = get_csv_field(linea, 1);
+    usuario->nombre = (char*) get_csv_field(linea, 0);
+	usuario->contrasena = (char*) get_csv_field(linea, 1);
 
 	return usuario;
 
@@ -72,12 +72,12 @@ void *crearCancionCSV(char *linea){
 
     tipoCancion *cancion = (tipoCancion*) malloc (sizeof(tipoCancion));
 
-    cancion->id = get_csv_field(linea, 0);
-	cancion->nombre = get_csv_field(linea, 1);
-	cancion->artista = get_csv_field(linea, 2);
-	cancion->genero = get_csv_field(linea, 3);
-	cancion->subgenero = get_csv_field(linea, 4);
-	cancion->puntaje = get_csv_field(linea, 5);
+    cancion->id = (int) get_csv_field(linea, 0);
+	cancion->nombre = (char*) get_csv_field(linea, 1);
+	cancion->artista = (char*) get_csv_field(linea, 2);
+	cancion->genero = (char*) get_csv_field(linea, 3);
+	cancion->subgenero = (char*) get_csv_field(linea, 4);
+	cancion->puntaje = (int) get_csv_field(linea, 5);
 
 	return cancion;
 
@@ -87,9 +87,9 @@ void *crearArtistaCSV(char *linea){
 
     tipoArtista *artista = (tipoArtista*) malloc (sizeof(tipoArtista));
 
-    artista->nombre = get_csv_field(linea, 0);
-    artista->genero = get_csv_field(linea, 1);
-    artista->subgenero = get_csv_field(linea, 2);
+    artista->nombre = (char*) get_csv_field(linea, 0);
+    artista->genero = (char*) get_csv_field(linea, 1);
+    artista->subgenero = (char*) get_csv_field(linea, 2);
 
     return artista;
 
@@ -99,8 +99,8 @@ void *crearGeneroCSV(char *linea){
 
     tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
 
-    genero->nombre = get_csv_field(linea, 0);
-    genero->listaCanciones = list_create(genero->listaCanciones);
+    genero->nombre = (char*) get_csv_field(linea, 0);
+    genero->listaCanciones = list_create((void *) genero->listaCanciones);
     return genero;
 
 }
@@ -118,7 +118,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     if(archivo == NULL)
     {
         printf("ERROR AL ABRIR EL ARCHIVO\n");
-        ExitProcess(1);
+        //ExitProcess(0);
     }
 
     while(fgets(linea, 1000, archivo)!= NULL)
@@ -137,7 +137,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     if(archivo == NULL)
     {
         printf("ERROR AL ABRIR EL ARCHIVO\n");
-        ExitProcess(1);
+        return;
     }
 
     while(fgets(linea, 1000, archivo)!= NULL)
@@ -156,7 +156,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     if(archivo == NULL)
     {
         printf("ERROR AL ABRIR EL ARCHIVO\n");
-        ExitProcess(1);
+        return;
     }
 
     while(fgets(linea, 1000, archivo)!= NULL)
@@ -175,7 +175,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     if(archivo == NULL)
     {
         printf("ERROR AL ABRIR EL ARCHIVO\n");
-        ExitProcess(1);
+        return;
     }
 
     while(fgets(linea, 1000, archivo)!= NULL)
@@ -218,12 +218,12 @@ void mostrarMapaCanciones(Map* mapa){
 
     while( datoCancion != NULL ){
 
-        printf("%s \n", datoCancion->id);
+        printf("%d \n", datoCancion->id);
         printf("%s \n", datoCancion->nombre);
         printf("%s \n", datoCancion->artista);
         printf("%s \n", datoCancion->genero);
         printf("%s \n", datoCancion->subgenero);
-        printf("%s \n", datoCancion->puntaje);
+        printf("%d \n", datoCancion->puntaje);
         printf("\n");
 
 

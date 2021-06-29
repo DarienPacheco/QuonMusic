@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "funciones.h"
 #include "list.h"
 #include "map.h"
 
 /*
-  funci髇 para comparar claves de tipo string
+  funci贸n para comparar claves de tipo string
   retorna 1 si son iguales
 */
 int is_equal_string(void * key1, void * key2) {
@@ -14,7 +15,7 @@ int is_equal_string(void * key1, void * key2) {
 }
 
 /*
-  funci髇 para comparar claves de tipo string
+  funci贸n para comparar claves de tipo string
   retorna 1 si son key1<key2
 */
 int lower_than_string(void * key1, void * key2) {
@@ -23,7 +24,7 @@ int lower_than_string(void * key1, void * key2) {
 }
 
 /*
-  funci髇 para comparar claves de tipo int
+  funci贸n para comparar claves de tipo int
   retorna 1 si son iguales
 */
 int is_equal_int(void * key1, void * key2) {
@@ -32,7 +33,7 @@ int is_equal_int(void * key1, void * key2) {
 }
 
 /*
-  funci髇 para comparar claves de tipo int
+  funci贸n para comparar claves de tipo int
   retorna 1 si son key1<key2
 */
 int lower_than_int(void * key1, void * key2) {
