@@ -42,6 +42,16 @@ typedef struct{
 
 const char *get_csv_field (char * tmp, int k);
 
+void *crearUsuarioCSV(char *linea);
+
+void *crearCancionCSV(char *linea);
+
+void *crearArtistaCSV(char *linea);
+
+void *crearGeneroCSV(char *linea);
+
+void *crearUsuario(char* user, char* contra);
+
 void llenarBD(Map *, Map *, Map *, Map *);
 
 void mostrarMapaUsuario(Map*);

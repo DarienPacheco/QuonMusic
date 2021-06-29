@@ -46,7 +46,7 @@ const char *get_csv_field (char * tmp, int k) {
     return NULL;
 }
 
-void *crearUsuario(char *linea){
+void *crearUsuarioCSV(char *linea){
 
     tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
@@ -57,7 +57,18 @@ void *crearUsuario(char *linea){
 
 }
 
-void *crearCancion(char *linea){
+void *crearUsuario(char* user, char* contra){
+
+    tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
+
+    usuario->nombre = user;
+	usuario->contrasena = contra;
+
+	return usuario;
+
+}
+
+void *crearCancionCSV(char *linea){
 
     tipoCancion *cancion = (tipoCancion*) malloc (sizeof(tipoCancion));
 
@@ -72,7 +83,7 @@ void *crearCancion(char *linea){
 
 }
 
-void *crearArtista(char *linea){
+void *crearArtistaCSV(char *linea){
 
     tipoArtista *artista = (tipoArtista*) malloc (sizeof(tipoArtista));
 
@@ -84,7 +95,7 @@ void *crearArtista(char *linea){
 
 }
 
-void *crearGenero(char *linea){
+void *crearGeneroCSV(char *linea){
 
     tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
 
@@ -112,7 +123,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     while(fgets(linea, 1000, archivo)!= NULL)
     {
-        datoUsuario = crearUsuario(linea);
+        datoUsuario = crearUsuarioCSV(linea);
         insertMap(mapaUsuario, datoUsuario->nombre, datoUsuario);
     }
 
@@ -131,7 +142,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     while(fgets(linea, 1000, archivo)!= NULL)
     {
-        datoCancion = crearCancion(linea);
+        datoCancion = crearCancionCSV(linea);
         insertMap(mapaCanciones, datoCancion->id, datoCancion);
     }
 
@@ -150,7 +161,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     while(fgets(linea, 1000, archivo)!= NULL)
     {
-        datoArtista = crearArtista(linea);
+        datoArtista = crearArtistaCSV(linea);
         insertMap(mapaArtista, datoArtista->nombre, datoArtista);
     }
 
@@ -169,7 +180,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     while(fgets(linea, 1000, archivo)!= NULL)
     {
-        datoGenero = crearGenero(linea);
+        datoGenero = crearGeneroCSV(linea);
         insertMap(mapaGenero, datoGenero->nombre, datoGenero);
     }
 

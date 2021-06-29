@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1624590372 source:c:\users\jefte\documents\github\quonmusic\main.c
+1624929826 source:c:\users\jefte\documents\github\quonmusic\main.c
 	<stdio.h>
 	<stdlib.h>
+	"funciones.h"
+	"list.h"
+	"map.h"
 
 1624591660 source:c:\users\pablo\desktop\quonmusic\list.c
 	"list.h"
@@ -36,4 +39,31 @@
 	<stdlib.h>
 	<assert.h>
 	<string.h>
+
+1624929802 source:c:\users\jefte\documents\github\quonmusic\funciones.c
+	"list.h"
+	"funciones.h"
+	"map.h"
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<string.h>
+
+1624921718 c:\users\jefte\documents\github\quonmusic\list.h
+
+1624929808 c:\users\jefte\documents\github\quonmusic\funciones.h
+	"map.h"
+	"list.h"
+
+1624921718 c:\users\jefte\documents\github\quonmusic\map.h
+
+1624921718 source:c:\users\jefte\documents\github\quonmusic\list.c
+	"list.h"
+	<stdlib.h>
+	<assert.h>
+
+1624921718 source:c:\users\jefte\documents\github\quonmusic\map.c
+	"Map.h"
+	<stdlib.h>
+	<assert.h>
 

@@ -45,17 +45,24 @@ int main(){
     int op;
     int opInicioSesion;
     int opMenu;
+    char* regUsuario;
+    char* regContra;
+
+    tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
+
+    regUsuario = (char*) malloc(sizeof(regUsuario));
+    regContra = (char*) malloc(sizeof(regContra));
 
     Map *mapaCanciones = createMap(is_equal_int);
     Map *mapaArtista = createMap(is_equal_string);
     Map *mapaGenero = createMap(is_equal_string);
     Map *mapaUsuario = createMap(is_equal_string);
 
-    llenarBD(mapaUsuario, mapaCanciones, mapaArtista, mapaGenero);
-    mostrarMapaUsuario(mapaCanciones);
-    mostrarMapaCanciones(mapaUsuario);
-    mostrarMapaArtista(mapaArtista);
-    mostrarMapaGenero(mapaGenero);
+    llenarBD(mapaCanciones, mapaUsuario, mapaArtista, mapaGenero);
+    //mostrarMapaUsuario(mapaUsuario);
+    //mostrarMapaCanciones(mapaCanciones);
+    //mostrarMapaArtista(mapaArtista);
+    //mostrarMapaGenero(mapaGenero);
 
     while(1){//Muestra el menu
 
@@ -76,11 +83,49 @@ int main(){
 
         case 1:
 
+            regUsuario = (char*) malloc(sizeof(regUsuario));
+            regContra = (char*) malloc(sizeof(regContra));
+
             printf("--------------------Registrarse---------------------\n");
             printf("Ingrese nombre de usuario: \n");
-            //un scanf del nombre de usuario
+            scanf("%s", regUsuario);
             printf("Ingrese contrasena:\n");
-            //un scanf de la contrasena
+            scanf("%s", regContra);
+
+            //printf("%s %s\n", regUsuario, regContra);
+
+            /**usuarioRegistro->nombre = regUsuario;
+            usuarioRegistro->contrasena = regContra;**/
+
+            usuarioRegistro = searchMap(mapaUsuario, regUsuario);//si el usuario no existe en el mapa, esta variable sigue siendo NULL
+
+            /**printf("usuario: %s \n", usuarioRegistro->nombre);
+            printf("contrasena: %s \n", usuarioRegistro->contrasena);**/
+
+            if(usuarioRegistro == NULL){
+
+                //usuarioRegistro->nombre = strdup(regUsuario);
+                //strcpy(usuarioRegistro->nombre, regUsuario);
+                //usuarioRegistro->contrasena = regContra;
+
+                usuarioRegistro = crearUsuario(regUsuario, regContra);
+
+                //printf("%s %s\n", regUsuario, regContra);
+
+                /**printf("usuario: %s \n", usuarioRegistro->nombre);
+                printf("contrasena: %s \n", usuarioRegistro->contrasena);**/
+
+                insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
+
+                mostrarMapaUsuario(mapaUsuario);
+
+                printf("SE HA REGISTRADO CORRECTAMENTE\n");
+
+            }else{
+
+                printf("ESTE USUARIO YA SE ENCUENTRA REGISTRADO\n");
+
+            }
 
             break;
 
