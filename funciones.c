@@ -91,6 +91,20 @@ void *crearArtistaCSV(char *linea){
     artista->genero = (char*) get_csv_field(linea, 1);
     artista->subgenero = (char*) get_csv_field(linea, 2);
 
+    char* cancion = "hola";
+    
+    artista->listaCanciones = list_create((void *) artista->listaCanciones);
+
+    for (int i=3 ; cancion ; i++){
+
+      cancion = (char*) get_csv_field(linea, i);
+
+      if (cancion != NULL){
+        list_push_back(artista->listaCanciones, cancion);
+      }
+
+    }
+
     return artista;
 
 }
@@ -99,8 +113,21 @@ void *crearGeneroCSV(char *linea){
 
     tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
 
+    char* cancion = "hola";
+
     genero->nombre = (char*) get_csv_field(linea, 0);
+    
     genero->listaCanciones = list_create((void *) genero->listaCanciones);
+
+    for (int i=1 ; cancion ; i++){
+
+      cancion = (char*) get_csv_field(linea, i);
+
+      if (cancion != NULL){
+        list_push_back(genero->listaCanciones, cancion);
+      }
+
+    }
     return genero;
 
 }
@@ -237,6 +264,7 @@ void mostrarMapaCanciones(Map* mapa){
 void mostrarMapaArtista(Map* mapa){
 
     tipoArtista* datoArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
+    char* cancion;
 
     datoArtista = firstMap(mapa);
     printf("-----Mapa de Artistas-----\n");
@@ -246,6 +274,16 @@ void mostrarMapaArtista(Map* mapa){
         printf("%s \n", datoArtista->nombre);
         printf("%s \n", datoArtista->genero);
         printf("%s \n", datoArtista->subgenero);
+
+        cancion = list_first(datoArtista->listaCanciones);
+  
+        while(cancion != NULL ){
+
+          printf("%s \n", cancion);
+
+          cancion = list_next(datoArtista->listaCanciones);
+
+        }
         printf("\n");
 
         datoArtista = nextMap(mapa);
@@ -256,9 +294,46 @@ void mostrarMapaArtista(Map* mapa){
     free(datoArtista);
 }
 
+void mostrarMapaArtistaRegistro(Map* mapa){
+
+  tipoArtista* oArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
+
+  list *listaArtista = list_create((void*) listaArtista);
+
+  oArtista = firstMap(mapa);
+
+  while( oArtista != NULL ){
+
+    //printf("%s \n", oArtista->nombre);
+    list_push_front(listaArtista, oArtista->nombre);
+    
+    oArtista = nextMap(mapa);
+
+  }
+
+  char* artista;
+
+  artista = list_first(listaArtista);
+  
+  while(artista != NULL ){
+
+    printf("%s \n", artista);
+
+    artista = list_next(listaArtista);
+
+  }
+
+  printf("\n");
+  free(oArtista);
+
+}
+
 void mostrarMapaGenero(Map* mapa){
 
     tipoGenero* datoGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
+    char* cancion;
+    
+    //int num = list_size(datoGenero->listaCanciones);
 
     datoGenero = firstMap(mapa);
     printf("-----Mapa de Generos-----\n");
@@ -266,6 +341,16 @@ void mostrarMapaGenero(Map* mapa){
     while( datoGenero != NULL ){
 
         printf("%s \n", datoGenero->nombre);
+        
+        cancion = list_first(datoGenero->listaCanciones);
+  
+        while(cancion != NULL ){
+
+          printf("%s \n", cancion);
+
+          cancion = list_next(datoGenero->listaCanciones);
+
+        }
         printf("\n");
 
         datoGenero = nextMap(mapa);
@@ -274,4 +359,37 @@ void mostrarMapaGenero(Map* mapa){
 
     printf("\n");
     free(datoGenero);
+}
+
+void mostrarMapaGeneroRegistro(Map* mapa){
+
+  tipoGenero* oGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
+
+  list *listaGenero = list_create((void*) listaGenero);
+
+  oGenero = firstMap(mapa);
+
+  while( oGenero != NULL ){
+
+    //printf("%s \n", oGenero->nombre);
+    list_push_front(listaGenero, oGenero->nombre);
+
+    oGenero = nextMap(mapa);
+
+  }
+
+  char* genero;
+
+  genero = list_first(listaGenero);
+
+  while( genero != NULL ){
+
+    printf("%s \n", genero);
+
+    genero = list_next(listaGenero);
+
+  }
+
+  free(oGenero);
+  
 }

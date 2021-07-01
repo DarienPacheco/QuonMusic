@@ -7,9 +7,9 @@ typedef struct{
 
     char *nombre;
     char *contrasena;
-    //list *canciones_favoritas; //esto deberia ser una lista
-    //list *artistas_favoritos;
-    //list *generos_favoritos;
+    list *canciones_favoritas; //esto deberia ser una lista
+    list *artistas_favoritos;
+    list *generos_favoritos;
 
 }tipoUsuario;
 
@@ -29,7 +29,7 @@ typedef struct{
     char *nombre;
     char *genero;
     char *subgenero;
-    //list canciones;
+    list *listaCanciones;
 
 }tipoArtista;
 
@@ -60,5 +60,10 @@ void mostrarMapaCanciones(Map*);
 
 void mostrarMapaArtista(Map*);
 
+void mostrarMapaArtistaRegistro(Map* mapa);
+
 void mostrarMapaGenero(Map*);
+
+void mostrarMapaGeneroRegistro(Map* mapa);
+
 #endif

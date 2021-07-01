@@ -48,6 +48,10 @@ int main(){
     int opMenu;
     char* regUsuario;
     char* regContra;
+    char* regArtista_1;
+    char* regArtista_2;
+    char* regGenero_1;
+    char* regGenero_2;
 
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
@@ -86,6 +90,10 @@ int main(){
 
             regUsuario = (char*) malloc(sizeof(regUsuario));
             regContra = (char*) malloc(sizeof(regContra));
+            regArtista_1 = (char*) malloc(sizeof(regArtista_1));
+            regArtista_2 = (char*) malloc(sizeof(regArtista_2));
+            regGenero_1 = (char*) malloc(sizeof(regGenero_1));
+            regGenero_2 = (char*) malloc(sizeof(regGenero_2));
 
             printf("--------------------Registrarse---------------------\n");
             printf("Ingrese nombre de usuario: \n");
@@ -93,34 +101,41 @@ int main(){
             printf("Ingrese contrasena:\n");
             scanf("%s", regContra);
 
-            //printf("%s %s\n", regUsuario, regContra);
-
-            /**usuarioRegistro->nombre = regUsuario;
-            usuarioRegistro->contrasena = regContra;**/
-
             usuarioRegistro = searchMap(mapaUsuario, regUsuario);//si el usuario no existe en el mapa, esta variable sigue siendo NULL
-
-            /**printf("usuario: %s \n", usuarioRegistro->nombre);
-            printf("contrasena: %s \n", usuarioRegistro->contrasena);**/
 
             if(usuarioRegistro == NULL){
 
-                //usuarioRegistro->nombre = strdup(regUsuario);
-                //strcpy(usuarioRegistro->nombre, regUsuario);
-                //usuarioRegistro->contrasena = regContra;
+              /**mostrar genero musical y artistas**/
 
-                usuarioRegistro = crearUsuario(regUsuario, regContra);
+              printf("Seleccione 2 artistas:\n\n");
 
-                //printf("%s %s\n", regUsuario, regContra);
+              mostrarMapaArtistaRegistro(mapaArtista);
 
-                /**printf("usuario: %s \n", usuarioRegistro->nombre);
-                printf("contrasena: %s \n", usuarioRegistro->contrasena);**/
+              printf("Ingrese seleccion:\n");
+              printf("Artista 1: ");
+              scanf("%s", regArtista_1);
+              printf("Artista 2: ");
+              scanf("%s", regArtista_2);
 
-                insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
+              //printf("Ingrese n de artista:\n");
 
-                mostrarMapaUsuario(mapaUsuario);
+              printf("\nSeleccione 2 generos:\n\n");
 
-                printf("SE HA REGISTRADO CORRECTAMENTE\n");
+              mostrarMapaGeneroRegistro(mapaGenero);
+
+              printf("\nIngrese seleccion:\n");
+              printf("Genero 1: ");
+              scanf("%s", regGenero_1);
+              printf("Genero 2: ");
+              scanf("%s", regGenero_2);
+
+              usuarioRegistro = crearUsuario(regUsuario, regContra);
+
+              insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
+
+              //mostrarMapaUsuario(mapaUsuario);
+
+              printf("SE HA REGISTRADO CORRECTAMENTE\n");
 
             }else{
 
@@ -155,7 +170,6 @@ int main(){
                         printf("4.Ver mis Artistas\n");//submenu
                         printf("5.Ver mis Generos\n");//submenu
                         printf("6.Cerrar Sesion\n");
-                        printf("7.Atras\n");
                         printf("0.Salir\n");
                         printf("Escriba el numero de la opcion: ");
                         scanf("%i", &opMenu);
@@ -197,10 +211,6 @@ int main(){
                             printf("CERRAR SESION\n");
                             break;
 
-                        case 7:
-
-                            break;
-
                         default:
 
                             printf("Opcion invalida");
@@ -208,7 +218,7 @@ int main(){
 
                         }
 
-                        if (opMenu == 7) break;
+                        if (opMenu == 6) break;
                         //break;
 
 
