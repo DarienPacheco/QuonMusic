@@ -582,9 +582,6 @@ void recomendacion_de_artistas(Map* mapaArtista, tipoUsuario* usuarioIngreso){
 
 void recomendacion_de_generos_fav(Map* mapaGenero, tipoUsuario* usuarioIngreso){
 
-  //list *lista_canciones = list_create((void*)lista_canciones);
-  //list *listaCancionesGenero = list_create((void*) listaCancionesGenero);
-
   char* cancion="";
   char* genero_usuario;
 
@@ -601,41 +598,56 @@ void recomendacion_de_generos_fav(Map* mapaGenero, tipoUsuario* usuarioIngreso){
 
     oGenero_busqueda = oGenero;
 
-    //while(oGenero_busqueda != NULL){
+    cancion = list_first(oGenero_busqueda->listaCanciones);
 
-      //lista_canciones = oGenero_busqueda->listaCanciones;
-      cancion = list_first(oGenero_busqueda->listaCanciones);
+    while(cancion != NULL){
 
-      while(cancion != NULL){
-
-        printf("%s \n", cancion);
-        cancion = list_next(oGenero_busqueda->listaCanciones);
-
-      //}
+      printf("%s \n", cancion);
+      cancion = list_next(oGenero_busqueda->listaCanciones);
 
     }
 
     genero_usuario = list_next(usuarioIngreso->generos_favoritos);
 
-    /**while (artista != NULL){
+  }
 
-    oArtista = searchMap(mapaArtista, artista);
-    //printf("%s \n", oArtista->genero);
+}
 
-    oArtistaBusqueda = firstMap(mapaArtista);
-    while(oArtistaBusqueda != NULL){
+void cancion_por_genero(char* input, Map* mapaGenero){
 
-      if( !(strcmp(oArtistaBusqueda->genero, oArtista->genero)) ){
-        list_push_back(lista_artistas, oArtistaBusqueda->nombre);
-      }
+  tipoGenero *oGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
+  char *cancion;
+  //printf("%s", input);
+  oGenero = searchMap(mapaGenero, input);
+  //printf("%s",oGenero->nombre);
+  cancion = list_first(oGenero->listaCanciones);
 
-      oArtistaBusqueda = nextMap(mapaArtista);
+  printf("Te recomendamos esta cancion: \n");
+  printf("%s\n", cancion);
 
-    }
+}
 
-    artista = list_next(usuarioIngreso->artistas_favoritos);
+void cancionPorArtista(Map* mapaArtista, char* artistaEscogido){
 
-  }**/
+  list *listaCanciones = list_create((void*)listaCanciones);
+
+  tipoArtista* oArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
+
+  oArtista = searchMap(mapaArtista, artistaEscogido);
+
+  listaCanciones = oArtista->listaCanciones;
+
+  char* cancion;
+
+  cancion = list_first(listaCanciones);
+
+  printf("Te recomendamos estas canciones: \n");
+
+  while( cancion != NULL ){
+
+    printf("%s\n", cancion);
+
+    cancion = list_next(listaCanciones);
 
   }
 

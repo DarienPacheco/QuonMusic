@@ -73,4 +73,8 @@ void recomendacion_de_artistas(Map* , tipoUsuario* );
 
 void recomendacion_de_generos_fav(Map* , tipoUsuario*);
 
+void cancion_por_genero(char* , Map*);
+
+void cancionPorArtista(Map* , char*);
+
 #endif

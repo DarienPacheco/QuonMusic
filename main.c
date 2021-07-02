@@ -56,6 +56,7 @@ int main(){
     char* inicioUsuario;
     char* inicioContrasena;
     char* input;
+    char* artistaRecomEscogido;
 
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
     tipoUsuario* usuarioIngreso = (tipoUsuario*) malloc(sizeof(tipoUsuario));
@@ -65,6 +66,9 @@ int main(){
 
     inicioUsuario = (char*) malloc(sizeof(inicioUsuario));
     inicioContrasena = (char*) malloc(sizeof(inicioContrasena));
+
+    input = (char*) malloc(sizeof(input));
+    artistaRecomEscogido = (char*) malloc(sizeof(artistaRecomEscogido));
 
     Map *mapaCanciones = createMap(is_equal_int);
     Map *mapaArtista = createMap(is_equal_string);
@@ -267,7 +271,7 @@ int main(){
 
                                       case 3:
 
-                                        printf("TOP 10");
+                                        printf("Atras\n");
                                         //porque está top 10 aqui?
                                         //tipoCancion * cancionTop = malloc(size_t __size)
                                         break;
@@ -305,13 +309,39 @@ int main(){
                                       
                                       case 1:
 
-                                        printf("Ingrese un genero de música para recibir una recomendacion:\n");
-                                        scanf("%s", input);
+                                        input = (char*) malloc(sizeof(input));
 
+                                        printf("Ingrese un genero de música para recibir una recomendacion:\n");
+                                        //getchar();
+                                        scanf("%s", input);
+                                        //printf("%s", input);
+                                        cancion_por_genero(input, mapaGenero);
 
                                         break;
 
+                                      case 2:
+
+                                        artistaRecomEscogido = (char*) malloc(sizeof(artistaRecomEscogido));
+
+                                        printf("Ingrese un artista para recibir una recomendacion\n");
+                                        scanf("%s", artistaRecomEscogido);
+
+                                        cancionPorArtista(mapaArtista, artistaRecomEscogido);
+
+                                        break;
+                                      
+                                      case 3:
+
+                                        break;
+
+                                      default:
+                                        
+                                        printf("Opcion invalida");
+                                        break;
+
                                     }
+
+                                    if(opRecomendar == 3) break;
 
                                   }
 
@@ -391,3 +421,4 @@ int main(){
 
     return 0;
 }
+
