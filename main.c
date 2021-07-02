@@ -46,17 +46,25 @@ int main(){
     int op;
     int opInicioSesion;
     int opMenu;
+    int opRecomendar;
     char* regUsuario;
     char* regContra;
     char* regArtista_1;
     char* regArtista_2;
     char* regGenero_1;
     char* regGenero_2;
+    char* inicioUsuario;
+    char* inicioContrasena;
+    char* input;
 
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
+    tipoUsuario* usuarioIngreso = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
     regUsuario = (char*) malloc(sizeof(regUsuario));
     regContra = (char*) malloc(sizeof(regContra));
+
+    inicioUsuario = (char*) malloc(sizeof(inicioUsuario));
+    inicioContrasena = (char*) malloc(sizeof(inicioContrasena));
 
     Map *mapaCanciones = createMap(is_equal_int);
     Map *mapaArtista = createMap(is_equal_string);
@@ -152,12 +160,28 @@ int main(){
 
                 printf("-------------------Iniciar Sesion-------------------\n");
                 printf("Ingrese nombre de usuario:\n");
-                //scanf() del nombre de usuario
+                scanf("%s", inicioUsuario);//scanf() del nombre de usuario
+
+                usuarioIngreso = searchMap(mapaUsuario, inicioUsuario);
+                         
                 printf("Ingrese contrasena:\n");
-                scanf("%i", &opInicioSesion);//estoy escaneando un int aca, hay qye cambiarlo, solo lo hice para avanzar y probar un poco el menu
+                scanf("%s", inicioContrasena);
+/*
+                printf("%s\n",usuarioIngreso->nombre);
+                
+                canciones = list_first(usuarioIngreso->canciones_favoritas);
+
+                while(canciones != NULL){
+                  printf("%s, ", canciones);
+                  canciones = list_next(usuarioIngreso->canciones_favoritas);
+                }
+                printf("\n");
+                */
+
+    
                 system("clear");
 
-                if( opInicioSesion == 2 ){/**inicio de sesion valido, entra al menu principal de la aplicacion**/
+                if( !(strcmp (inicioContrasena, usuarioIngreso->contrasena)) ){/**inicio de sesion valido, entra al menu principal de la aplicacion**/
 
                     printf("Inicio sesion correctamente\n");
 
@@ -188,7 +212,130 @@ int main(){
 
                         case 2:
 
-                            printf("RECOMENDACIONES\n");
+                          //opRecomendar = (int) malloc(sizeof(opRecomendar)); 
+
+                            while(1) {
+
+                              printf("RECOMENDACIONES\n");
+                              printf("1.Segun tus gustos\n");
+                              printf("2.Tu escoges\n");
+                              printf("3.TOP\n");
+                              printf("4.Atras\n");
+                              printf("0.Salir\n");
+                              printf("Escriba el numero de la opcion: ");
+                              scanf("%i", &opRecomendar);
+
+                              system("clear");
+
+                              switch(opRecomendar){
+
+                                case 0:
+
+                                  return 0;
+
+                                case 1:
+
+                                  while(1){
+
+                                    printf("Te recomendaremos música segun tus:\n");
+                                    printf("1.Artistas favoritos\n");
+                                    printf("2.Generos favoritos\n");
+                                    printf("3.Atras\n");
+                                    printf("0.Salir\n");
+                                    printf("Escriba el numero de la opcion: ");
+                                    scanf("%i", &opRecomendar);
+
+                                    switch(opRecomendar){
+
+                                      case 0:
+
+                                        return 0;
+
+                                      case 1:
+
+                                        printf("RECOMENDACION DE ARTISTAS\n");
+                                        //arreglar caso en que se repita el genero
+                                        recomendacion_de_artistas(mapaArtista, usuarioIngreso);
+                                        
+                                        break;
+
+                                      case 2:
+
+                                        printf("RECOMENDAR POR GENEROS\n");
+                                        recomendacion_de_generos_fav(mapaGenero, usuarioIngreso);
+                                        break;
+
+                                      case 3:
+
+                                        printf("TOP 10");
+                                        //porque está top 10 aqui?
+                                        //tipoCancion * cancionTop = malloc(size_t __size)
+                                        break;
+
+                                      default:
+
+                                        printf("Opcion invalida\n");
+                                        break;
+
+                                    }
+
+                                    if(opRecomendar == 3) break;
+
+                                  }
+
+                                  break;
+
+                                case 2:
+
+                                  while(1){
+
+                                    printf("Te recomendaremos música según:\n");
+                                    printf("1.Un genero de música escogido\n");
+                                    printf("2.Un artista escogido\n");
+                                    printf("3.Atras\n");
+                                    printf("0.Salir\n");
+                                    printf("Escriba el numero de la opcion: ");
+                                    scanf("%i", &opRecomendar);
+
+                                    switch(opRecomendar){
+
+                                      case 0:
+
+                                        return 0;
+                                      
+                                      case 1:
+
+                                        printf("Ingrese un genero de música para recibir una recomendacion:\n");
+                                        scanf("%s", input);
+
+
+                                        break;
+
+                                    }
+
+                                  }
+
+                                  break;
+
+                                case 3:
+
+                                  break;
+
+                                case 4:
+
+                                  break;
+
+                                default:
+
+                                  printf("Opcion invalida");
+                                  break; 
+
+                              }
+
+                              if(opRecomendar == 4) break;
+
+                            }
+
                             break;
 
                         case 3:
@@ -218,7 +365,7 @@ int main(){
 
                         }
 
-                        if (opMenu == 6) break;
+                        if (opMenu == 6) break;//falta limpiar los datos de inicio de sesion
                         //break;
 
 
@@ -226,8 +373,7 @@ int main(){
 
                 }else{
 
-                    printf("Datos incorrectos\n");
-
+                  printf("Datos incorrectos\n");
                 }
 
             }

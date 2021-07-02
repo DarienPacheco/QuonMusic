@@ -1,5 +1,8 @@
 #ifndef _FUNCIONES_H
 #define _FUNCIONES_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "map.h"
 #include "list.h"
 
@@ -15,7 +18,7 @@ typedef struct{
 
 typedef struct{
 
-    int id;
+    char* id;
     char *nombre;
     char *artista;
     char *genero;
@@ -42,7 +45,7 @@ typedef struct{
 
 const char *get_csv_field (char * tmp, int k);
 
-void *crearUsuarioCSV(char *linea);
+/*void *crearUsuarioCSV(FILE *archivo, char *linea);*/
 
 void *crearCancionCSV(char *linea);
 
@@ -60,10 +63,14 @@ void mostrarMapaCanciones(Map*);
 
 void mostrarMapaArtista(Map*);
 
-void mostrarMapaArtistaRegistro(Map* mapa);
+void mostrarMapaArtistaRegistro(Map*);
 
 void mostrarMapaGenero(Map*);
 
-void mostrarMapaGeneroRegistro(Map* mapa);
+void mostrarMapaGeneroRegistro(Map*);
+
+void recomendacion_de_artistas(Map* , tipoUsuario* );
+
+void recomendacion_de_generos_fav(Map* , tipoUsuario*);
 
 #endif

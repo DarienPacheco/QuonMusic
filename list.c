@@ -323,7 +323,7 @@ list_pop_current (list *list) {
 
     list->count = (list->count) - 1;
 
-    void * data = aux->data;
+    void * data = (void*) aux->data;
 
     list->current = aux->next;
 
