@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include "funciones.h"
 #include "list.h"
 #include "map.h"
@@ -61,14 +62,14 @@ int main(){
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
     tipoUsuario* usuarioIngreso = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
-    regUsuario = (char*) malloc(sizeof(regUsuario));
-    regContra = (char*) malloc(sizeof(regContra));
+    regUsuario = (char*) malloc(sizeof(char)); //cambie todos los sizeof parentesis
+    regContra = (char*) malloc(sizeof(char));
 
-    inicioUsuario = (char*) malloc(sizeof(inicioUsuario));
-    inicioContrasena = (char*) malloc(sizeof(inicioContrasena));
+    inicioUsuario = (char*) malloc(sizeof(char));
+    inicioContrasena = (char*) malloc(sizeof(char));
 
-    input = (char*) malloc(sizeof(input));
-    artistaRecomEscogido = (char*) malloc(sizeof(artistaRecomEscogido));
+    //input = (char*) malloc(sizeof(input));
+    artistaRecomEscogido = (char*) malloc(sizeof(char));
 
     Map *mapaCanciones = createMap(is_equal_int);
     Map *mapaArtista = createMap(is_equal_string);
@@ -100,12 +101,12 @@ int main(){
 
         case 1:
 
-            regUsuario = (char*) malloc(sizeof(regUsuario));
-            regContra = (char*) malloc(sizeof(regContra));
-            regArtista_1 = (char*) malloc(sizeof(regArtista_1));
-            regArtista_2 = (char*) malloc(sizeof(regArtista_2));
-            regGenero_1 = (char*) malloc(sizeof(regGenero_1));
-            regGenero_2 = (char*) malloc(sizeof(regGenero_2));
+            regUsuario = (char*) malloc(sizeof(char));
+            regContra = (char*) malloc(sizeof(char));
+            regArtista_1 = (char*) malloc(sizeof(char));
+            regArtista_2 = (char*) malloc(sizeof(char));
+            regGenero_1 = (char*) malloc(sizeof(char));
+            regGenero_2 = (char*) malloc(sizeof(char));
 
             printf("--------------------Registrarse---------------------\n");
             printf("Ingrese nombre de usuario: \n");
@@ -145,7 +146,7 @@ int main(){
 
               insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
 
-              //mostrarMapaUsuario(mapaUsuario);
+              mostrarMapaUsuario(mapaUsuario);
 
               printf("SE HA REGISTRADO CORRECTAMENTE\n");
 
@@ -309,22 +310,29 @@ int main(){
                                       
                                       case 1:
 
-                                        input = (char*) malloc(sizeof(input));
+                                        input = (char*) malloc(sizeof(char)*100);
 
                                         printf("Ingrese un genero de música para recibir una recomendacion:\n");
                                         //getchar();
-                                        scanf("%s", input);
-                                        //printf("%s", input);
+                                        fflush(stdin);
+                                        scanf("%s",input);
+                                        getchar();
+                                        printf("%s", input);
                                         cancion_por_genero(input, mapaGenero);
 
                                         break;
 
                                       case 2:
 
-                                        artistaRecomEscogido = (char*) malloc(sizeof(artistaRecomEscogido));
+                                        artistaRecomEscogido = (char*) malloc(sizeof(char)*100);
 
                                         printf("Ingrese un artista para recibir una recomendacion\n");
-                                        scanf("%s", artistaRecomEscogido);
+                                        //scanf("%s", artistaRecomEscogido);//falta arreglar
+                                        /**fflush(stdin);
+                                        getchar();
+                                        scanf("%[^\n]s",artistaRecomEscogido);**/
+
+                                        artistaRecomEscogido = leerCharEspacio(artistaRecomEscogido);
 
                                         cancionPorArtista(mapaArtista, artistaRecomEscogido);
 
@@ -371,6 +379,7 @@ int main(){
                         case 3:
 
                             printf("CANCIONES\n");
+                            canciones_del_usuario(mapaUsuario, usuarioIngreso);
                             break;
 
                         case 4:

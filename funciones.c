@@ -652,3 +652,77 @@ void cancionPorArtista(Map* mapaArtista, char* artistaEscogido){
   }
 
 }
+
+void canciones_del_usuario(Map* mapaUsuario, tipoUsuario* usuarioIngreso){
+
+  //list *lista_canciones = list_create((void*)lista_canciones);
+
+  char* cancion;
+  char* cancion_2;
+  int op;
+
+  cancion = list_first(usuarioIngreso->canciones_favoritas);
+  printf("Estas son tus canciones favoritas:\n");
+  while(cancion != NULL){
+
+    printf("%s\n", cancion);
+    cancion = list_next(usuarioIngreso->canciones_favoritas);
+  }
+  printf("{---------------------}\n");
+
+  //while(1){
+
+    printf("Que quieres hacer\n");
+    printf("1.Agregar una cancion\n");
+    printf("2.Quitar una cancion\n");
+    printf("3.Atras\n");
+
+    scanf("%d", &op);
+
+    switch(op){
+
+      case 1:
+
+        printf("Escribe la cancion que quieres agregar:\n");
+        cancion_2 = (char*) malloc(sizeof(char)*100);
+        fflush(stdin);
+        getchar();
+        scanf("%[^\n]s",cancion_2);
+
+
+
+        printf("%s\n",cancion_2);
+        break;
+
+      case 2:
+
+        break;
+
+      case 3:
+
+        break;
+
+      default:
+
+        break;
+      
+    }
+
+    //break;
+  //}
+
+}
+
+char* leerCharEspacio( char* palabra ){
+
+  palabra = malloc(sizeof(char)*100);
+
+  fflush(stdin);
+  getchar();
+  scanf("%[^\n]s",palabra);
+
+  //printf("%s\n",artista);
+
+  return palabra;
+
+}

@@ -77,4 +77,8 @@ void cancion_por_genero(char* , Map*);
 
 void cancionPorArtista(Map* , char*);
 
+void canciones_del_usuario(Map*, tipoUsuario*);
+
+char* leerCharEspacio( char* );
+
 #endif
