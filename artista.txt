@@ -4,7 +4,7 @@ Adele, Pop, R&B, Someone like you, Hello
 Aerosmith, Hard rock, Glam, Dream on, I dont to miss a thing
 A-ha, Synth pop, New wave, Take on me
 Alphaville, Synth pop, New wave, Forever young, Big in Japan
-Amy Winehouse, Soul, R&B,Back to black, Rehab
+Amy Winehouse, Soul, R&B, Back to black, Rehab
 Audioslave, Grunge, Alternative rock, Like a stone, Be yourself
 Barry White, R&B, Disco, Cant get enough of your love babe
 Bauhaus, Post-punk, Gothic, Bela Lugosis dead
@@ -25,17 +25,17 @@ Bon Jovi, Glam metal, Hard rock, Living on a prayer, Always
 Brian Adams, Pop-rock, Hard rock, Summer of 69, (Everything I do) I do it for you
 BTS, K-pop, HipHop, Dynamite, Butter
 Buzzcocks, Punk, New Wave, Ever fallen in love
-Calvin Harrys, EDM, Electronica, Pop, Feels
+Calvin Harrys, Electronica, Pop, Feels
 Carpenters, Pop, Rock, (They long to be) Close to you
 CHIC, Disco, R&B, Le freak, Good times
 Chuck Berry, Rock n Roll, R&B, Johnny be good, You never can tell
 Cyndi Lauper, Synth pop, Pop-rock, Girls just want to have fun, Time after time
-Credence Clearwater Revival, Country, Rock, Have you ever seen the rain,  Bad moon rising
+Credence Clearwater Revival, Country, Rock, Have you ever seen the rain, Bad moon rising
 Culture Beat, House, EDM, Mr. Vain, Got to get it
 Culture Club, Pop, New wave, Karma Chameleon, Do you really want to hurt me
 Daniel Johnston, Indie, Lo-fi, True love will find you in the end, Some things last a long time
-David Bowie, Glam, Art-Rock, Starman, Dollar days
-Dead or alive, Post-punk, Synth pop, You spin me around
+David Bowie, Glam, Art-rock, Starman, Dollar days
+Dead or alive, Post-punk, Synth pop, You spin me round
 Def Leppard, Heavy metal, Glam metal, Pour some sugar on me, Hysteria
 Depeche Mode, Synth pop, New Wave, Enjoy the silence, Everything counts
 Devo, Post-punk, Synth pop, Whip it, Puppet boy
@@ -47,7 +47,7 @@ Duran Duran, New wave, Synth pop, Hungry like the wolf, Ordinary world
 Eagles, Country, Rock, Hotel California
 Earth Wind & Fire, Disco, R&B, September, Boogie wonderland
 Echo & the Bunnymen, Post-punk, Alternative rock, The killing moon, Bring on the dancing horses
-Electric Light Orchestra, Progressive rock, Art-Rock, Don’t bring me down, Last train to London
+Electric Light Orchestra, Progressive rock, Art-rock, Dont bring me down, Last train to London
 Eminem, Rap, HipHop, Without me, Love the way you lie
 Elton John, Pop-rock, Glam, Rocket man, Tiny dancer
 Elvis Presley, Rock n Roll, Rock, Burning love, Jailhouse rock
@@ -71,7 +71,7 @@ Iggy Pop, Punk, Art-rock, The passenger, Lust for life
 Imagine Dragons, Pop-rock, Alternative rock, Believer
 Interpol, Post-punk, Indie, Evil, Rest my chemistry
 Iron Maiden, Heavy metal, Hard rock, The troopers, Wasted years
-Janis Joplin, Psicodelic rock, Blues, Piece of my heart, Maybe
+Janis Joplin, Psychedelic rock, Blues, Piece of my heart, Maybe
 Johnny Cash, Country, Rock n Roll, Hurt, Ring of fire
 John Lennon, Rock, Pop, Imagine, Woman
 Joji, R&B, Lo-fi, Slow dancing in the dark, Yeah right
@@ -87,7 +87,7 @@ Kiss, Glam metal, Hard rock, I was made for lovin you, Crazy nights
 Kool & the Gang, R&B, Jazz, Get down on it, Celebration
 Kraftwerk, Electronica, Synth pop, The model, Computer love
 La Bouche, House, EDM, Be my lover, Sweet dreams
-Led Zeppelin, Hard rock, Rock, Stairway to heaven, Inmigrant song
+Led Zeppelin, Hard rock, Rock, Stairway to heaven, Immigrant song
 Lily Allen, Indie, Pop-rock, Not fair, LDN
 LiSA, J-pop, Pop-rock, Crossing field, Gurenge
 Louis Armstrong, Jazz, Scat, What a wonderful world
@@ -98,23 +98,23 @@ Mariya Takeuchi, J-pop, City-pop, Plastic love
 Marvin Gaye, Soul, R&B, Aint no mountain high enough, I heard it through the grapevine 
 Men at Work, Pop-rock, New wave, Down under, Who can it be now?
 Metallica, Heavy metal, Hard rock, Enter sandman, Nothing else matters
-Michael Jackson, Pop, R&B, Billie jean, Beat it
+Michael Jackson, Pop, R&B, Billie Jean, Beat it
 Miki Matsubara, City-pop, J-pop, Stay with me
 Morrissey, Alternative rock, Indie, Suedehead, I know its gonna happen someday
-Motley Crue, Glam metal, Heavy metal, Kickstart my home sweet home
+Motley Crue, Glam metal, Heavy metal, Kickstart my heart, Home sweet home
 Nat King Cole, Jazz, Soul, L-O-V-E, When I fall in love
 Nena, Pop-rock, New wave, 99 Luftballons
 New order, Synth pop, Post-punk, Blue monday
 Nina Simone, Soul, Jazz, Feeling good, Wild is the wind
 Nirvana, Grunge, Alternative rock, Smells like teen spirit, Heart-shaped box
-Oasis, Brit-pop, Alternative rock, Wonderwall, 
+Oasis, Brit-pop, Alternative rock, Wonderwall, Shes electric
 Oingo Boingo, Ska, New wave, Stay, Not my slave
 Orchestral Manoeuvres in the Dark, Synth pop, New wave, Enola gay
 Paul Simon, Folk, Pop-rock, You can call me Al, Graceland
 Pet Shop Boys, Synth pop, Electronica, Always on my mind, Domino dancing
 Peter Gabriel, Progressive rock, Pop-rock, Solsbury hill
 Phil Collins, Pop-rock, Rock, Another day in paradise
-Pink Floyd, Progressive rock, Psicodelic rock, Another brick on the wall Pt.2, Echoes
+Pink Floyd, Progressive rock, Psychedelic rock, Another brick on the wall Pt.2, Echoes
 Queen, Rock, Art-rock, Bohemian rhapsody, Radio Ga Ga
 Quiet Riot, Glam metal, Heavy metal, Cum on feel the noize 
 Radiohead, Alternative rock, Art-rock, Karma police, All i need
@@ -125,7 +125,7 @@ R.E.M, Alternative rock, Pop-rock, Losing my religion, Man on the moon
 Reo Speedwagon, Hard rock, Rock, Cant fight this feeling, Keep in loving you 
 Rihanna, Pop, R&B, Diamonds, Love on the brain
 Rod Stewart, Rock, Soul, Da ya think Im sexy, Baby Jean
-Santana, Psicodelic rock, Soul, Soul sacrifice
+Santana, Psychedelic rock, Soul, Soul sacrifice
 Scatman John, Scat, EDM, Scatmans world
 Sex Pistols, Punk, Rock, Anarchy in the U.K, God save the queen
 Simons & Garfunkel, Folk, Pop-rock, Mrs. Robinson, The sound of the silence
@@ -135,21 +135,21 @@ Starship, Rock, Pop-rock, We built this city, Nothings gonna stop us now
 Stevie Wonder, Soul, R&B, Superstition, I just called to say I love you
 Sticky Fingers, Reggae, Indie, How to fly, Australia street
 Talking Heads, New wave, Post-punk, Psycho killer, This must be the place
-Tame Impala, Indie, Psicodelic rock, The less I know the better, Feels like we only go backwards
+Tame Impala, Indie, Psychedelic rock, The less I know the better, Feels like we only go backwards
 Tears for Fears, New wave, Synth pop, Everybody wants to rules the world, Mad world
 Tina Charles, Disco, Pop, I love to love
 The Alan Parsons Project, Progressive rock, Art-rock, Eye in the sky
 The Beach Boys, Rock n Roll, Pop, Wouldnt it be nice
 The Bangles, Pop-rock, Alternative rock, Eternal flame, Walk like an Egyptian
-The Beatles, Psicodelic rock, Pop-rock, Help!, Penny lane
+The Beatles, Psychedelic rock, Pop-rock, Help!, Penny Lane
 The Buggles, New wave, Synth pop, Video killed the radio star
-The Clash, Punk, Rock, Should stay or should I go, I forgot de the law
+The Clash, Punk, Rock, Should stay or should I go, I forgot the law
 The Cure, Gothic, Alternative rock, Just like heaven, Charlotte sometimes
 The Cranberries, Alternative rock, Pop-rock, Zombie, Just my imagination
-The Doors, Psicodelic rock, Blues, Light my fire, Touch me
-The Flaming Lips, Indie, Psicodelic rock, Yoshimi battles the pink robots pt.1
+The Doors, Psychedelic rock, Blues, Light my fire, Touch me
+The Flaming Lips, Indie, Psychedelic rock, Yoshimi battles the pink robots pt.1
 The Jam, Punk, New wave, Thats entertainment, Going underground
-The Killers, Alternative rock, Indie, Mr. Brightside, When you where young
+The Killers, Alternative rock, Indie, Mr. Brightside, When you were young
 The Notorious B.I.G, HipHop, Rap, Hypnotize, Big poppa
 The Police, New wave, Pop-rock, Every breath you take, So lonely
 The Rolling Stones, Rock n Roll, Hard rock, Paint it back, (I cant get no) Satisfaction

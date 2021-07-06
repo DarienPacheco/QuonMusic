@@ -1,20 +1,42 @@
-HipHop, Ambitionz az a ridah
-Rap, Ambitionz az a ridah
-Pop, Dancing queen, Gimme gimme gimme!, Someone like you, Hello
-Disco, Dancing queen, Gimme gimme gimme!, Cant get enough of your love babe
-Soul, Someone like you, Hello, Back to black, Rehab, Cant get enough of your love babe
-Hard rock, Dream on
-Power ballad, I dont to miss a thing, Forever young,
-Rock, I don’t to miss a thing
-Progressive rock, Dream on
-New wave, Take on me, Forever young, Big in Japan
-Synth pop, Take on me, Big in Japan
-R&B, Back to black, Rehab
-Post-punk, Bela Lugosis dead
-Gothic, Bela Lugosis dead
-Pop-rock
-Rock n Roll
-EDM
-Electronica
-Indie
-Lo-fi
+Alternative rock,Ordinary world,Believer,Silhouette,Suedehead,I know its gonna happen someday,Smells like teen spirit,Heart-shaped box,Wonderwall,Shes electric,Karma police,Losing my religion,Man on the moon,Black hole sun,Like a stone,Be yourself,Just like heaven,Zombie,Just my imagination,Thats entertainment,Mr. Brightside,When you were young,This charming man,I wanna be adored,Bitter sweet symphony,History,Stressed out
+Art-rock,Starman,Dollar Days,The passenger,Lust for life,Wuthering heights,21st Century schizoid man,Stairway to heaven,Perfect day,Vicious,Bohemian rhapsody,All I need,Psycho killer,This must be the place,Eye in the sky,Sunday morning,Baba O Riley
+Blues,Knockin on heavens door,Piece of my heart,Wild is the wind
+Brit-pop,Girls & Boys,Country house,Suedehead,Wonderwall,Shes electric,Bitter sweet symphony,History
+Country,Have you ever seen the rain,Bad moon rising,Hurt,Ring of fire,Not fair
+Dance,Girls just want to have fun,Give it up,Thats the way (I like it),Hung up,Beat it
+Disco,Dancing queen,Gimme gimme gimme!,Cant get enough of your love babe,Stayin alive,Night fever,Heart of glass,Rasputin,Rivers of Babylon,Le freak,Good Times,Hot stuff,Bad girls,September, Boogie wonderland,Last train to London,I will survive,Give it up,Thats the way (I like it),I was made for lovin you,Celebration,Billie Jean,Da ya think im sexy,I love to love,YMCA
+EDM,How you like that,Butter,Feels,Mr. Vain,Got to get it,Be my lover,Sweet dreams,Blue Monday,Diamonds,Scatmans world
+Folk,Like a rolling stone,Knockin on heavens door,Have you ever seen the rain,My sweet lord,Give me love,Dust in the wind,You can call me Al,Graceland,Solsbury hill,Mrs. Robinson,The sound of the silence,Help!
+Funk,Le freak,Boogie wonderland,Get down on it,Billie Jean,Superstition
+Glam,Starman,I was made for lovin you,Vicious,I know its gonna happen someday,20th Century boy,Cosmic dancer
+Glam metal,Living on a prayer,Pour some sugar on me,The final countdown,Carrie,Crazy nights, Kickstart my heart,Home sweet home,Cum on feel the noize,Hysteria
+Gothic,Bela Lugosis dead,Dear prudence,Charlotte sometimes
+Grunge,Smells like teen spirit,Heart-shaped box,Black hole sun,Like a stone,Be yourself
+Hard rock,Dream on,Rebel Yell,Paranoid,Iron man,Living on a prayer,Always,Summer of 69,Hysteria,The final countdown,Alone,Barracuda,The troopers,Carry on wayward son,Immigrant song,(I cant get no) Satisfaction,Baba O Riley,My generation,20th Century boy,Doctor doctor
+Heavy metal,Paranoid,Iron man,Barracuda,The troopers,Wasted years,Painkiller,Crazy nights,Immigrant song,Enter sandman,Nothing else matters,Kickstart my heart,Killing in the name,Bulls on parade,Doctor doctor
+HipHop,Ambitionz az a ridah,Sabotage,Intergalactic,Crazy in love,Kill this love,Stil D.R.E,Whats the difference,Without me,Love the way you lie,Pink + white,Chanel,It was a good day,You know how we do it,Stronger,Power,Hypnotize,Big poppa,Fancy
+House,Mr. Vain,Got to get it,Stronger,Be my lover,Sweet dreams,Scatmans world
+Indie,Country house,True love will find you in the end,Some things last a long time,Evil, Rest my chemistry,Australia street,The less I know the better,Feels like we only go backwards,Just my imagination,Yoshimi battles the pink robots pt.1,How soon is now?,I wanna be adored
+J-pop,Kaikai kitan,Silhouette,Nandemo nedari,Crossing field,Gurenge,Plastic love,Stay with me
+Jazz,Dollar Days,Fly me to the moon,My way,What a wonderful world,L-O-V-E,When I fall in love,Feeling good
+K-pop,Kill this love,How you like that,Dynamite,Butter,Fancy,I cant stop me	
+Lo-fi,True love will find you in the end,Some things last a long time,Yeah right
+New age,Only time,Orinoco flow
+New wave,Take on me,Forever young,Big in Japan,Rebel Yell,Dancing with myself,Heart of glass,Maria,Time after time,Karma Chameleon,Enjoy the silence,Whip it,Puppet boy,Come on Eileen,Hungry like the wolf,A little respect,Down in the park,Down under,Who can it be now?,99 Luftballons,Enola gay,We built this city,Everybody wants to rules the world,Mad world,Video killed the radio star,Going underground,Every breath you take,So lonely,Nobodys diary
+Pop,Dancing queen,Gimme gimme gimme!,Someone like you,Hello,Raindrops keep fallin on my head,Dynamite,Feels,Karma Chameleon,Not fair,LDN,Hung up,La isla bonita,Always on my mind,Another day in paradise,Diamonds,I love to love,Wouldnt it be nice,Penny Lane,Sunday morning
+Pop-rock,Uptown girl,Maria,Come on Eileen,Hungry like the wolf,Ordinary world,Tiny dancer,Everywhere,Invisible touch,Careless whisper,Believer,Wuthering heights,Perfect day,Down under,Who can it be now?,Beat it,99 Luftballons,Not my slave,Another day in paradise,Radio Ga Ga,Man on the moon,Da ya think im sexy,Baby Jean,We built this city,Everybody wants to rules the world,Walk like an Egyptian,Every breath you take
+Post-punk,Bela Lugosis dead,You spin me round,The killing moon,Bring on the dancing horses,Cars,Down in the park,Evil,Rest my chemistry,Love will tear us apart,Disorder,Dear prudence,Psycho killer,Just like heaven,Charlotte sometimes,Mr. Brightside,When you were young,This charming man,How soon is now?
+Power ballad,I dont to miss a thing,Forever young,Always,(Everything I do) I do it for you,Carrie,Nothing else matters,Home sweet home,Cant fight this feeling,Keep in loving you,Nothings gonna stop us now
+Progressive rock,Dream on,Hotel California,Dont bring me down,Invisible touch,Carry on wayward son,The court of the crimson king,21st Century schizoid man,Stairway to heaven,Solsbury hill,Another brick on the wall Pt.2,Echoes,Bohemian rhapsody,Soul sacrifice
+Psychedelic rock,Dont bring me down,Piece of my heart,Maybe,Echoes,Soul sacrifice,How to fly,The less I know the better,Feels like we only go backwards,Wouldnt it be nice,Penny Lane,Light my fire,Touch me,Yoshimi battles the pink robots pt.1,Paint it back
+Punk,Ever fallen in love,The passenger,Lust for life,I wanna be sedated,Sheena is a punk rocker,Anarchy in the U.K,God save the queen,Should stay or should I go,I forgot the law,Thats entertainment,Going underground,My generation
+Rap,Ambitionz az a ridah,Stil D.R.E,Whats the difference,Without me,Love the way you lie,It was a good day,You know how we do it,Hypnotize,Big poppa
+Rap rock,Sabotage,Power,Killing in the name,Bulls on parade,Stressed out,Heathens
+Reggae,Three little birds,No woman no cry,Do you really want to hurt me,How to fly,Australia street,So lonely,Red red wine,Kingston town
+Rock,I dont to miss a thing,Summer of 69,Sultans of swings,Hot stuff,Hotel California,Rocket man,Burning love,Woman,You can call me Al,Radio Ga Ga,Mrs. Robinson,Help!
+Rock n Roll,Johnny be Good,You never can tell,Burning love,Jailhouse rock,Paint it back,(I cant get no) Satisfaction
+R&B,Back to black,Rehab,Crazy in love,September,Last train to London,Pink + white,Chanel,Slow dancing in the dark,Yeah right,Get down on it,Aint no mountain high enough,Hit the road jack,Love on the brain,I just called to say I love you,Save your tears
+Ska,LDN,Our house,Stay,Not my slave 
+Soft rock,Piano man,Raindrops keep fallin on my head,(Everything I do) I do it for you,(They long to be) Close to you,Time after time,Rocket man,Tears in heaven,Dreams,Everywhere,Careless whisper,Imagine,Dust in the wind,Nothings gonna stop us now,Eye in the sky,Eternal flames
+Soul,Someone like you,Hello,Back to black,Rehab,Cant get enough of your love babe,Do you really want to hurt me,Maybe,Hurt,Slow dancing in the dark,What a wonderful world,Aint no mountain high enough,I heard it through the grapevine,Feeling good,Wild is the wind,Hit the road jack,Love on the brain,Superstition,I just called to say I love you,Touch me
+Synth pop,Take on me,Big in Japan,Girls just want to have fun,You spin me round,Enjoy the silence,Everything counts,Whip it,Puppet boy,A little respect,Sweet dreams,Cars,The model,Computer love,Blue Monday,Enola gay,Always on my mind,Domino dancing,Mad world,Video killed the radio star,Blinding lights,Save your tears,Dont go,Nobodys diary
