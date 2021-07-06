@@ -101,7 +101,7 @@ int main(){
 
         case 1:
 
-            regUsuario = (char*) malloc(sizeof(char));
+            regUsuario = (char*) malloc(sizeof(regUsuario));
             regContra = (char*) malloc(sizeof(char));
             regArtista_1 = (char*) malloc(sizeof(char));
             regArtista_2 = (char*) malloc(sizeof(char));
@@ -109,9 +109,9 @@ int main(){
             regGenero_2 = (char*) malloc(sizeof(char));
 
             printf("--------------------Registrarse---------------------\n");
-            printf("Ingrese nombre de usuario: \n");
+            printf("Ingrese nombre de usuario sin espacios: \n");
             scanf("%s", regUsuario);
-            printf("Ingrese contrasena:\n");
+            printf("Ingrese contrasena sin espacios:\n");
             scanf("%s", regContra);
 
             usuarioRegistro = searchMap(mapaUsuario, regUsuario);//si el usuario no existe en el mapa, esta variable sigue siendo NULL
@@ -126,9 +126,11 @@ int main(){
 
               printf("Ingrese seleccion:\n");
               printf("Artista 1: ");
-              scanf("%s", regArtista_1);
+              //scanf("%s", regArtista_1);
+              regArtista_1 = leerCharEspacio(regArtista_1);
               printf("Artista 2: ");
-              scanf("%s", regArtista_2);
+              //scanf("%s", regArtista_2);
+              regArtista_2 = leerCharEspacio(regArtista_2);
 
               //printf("Ingrese n de artista:\n");
 
@@ -138,21 +140,25 @@ int main(){
 
               printf("\nIngrese seleccion:\n");
               printf("Genero 1: ");
-              scanf("%s", regGenero_1);
+              //scanf("%s", regGenero_1);
+              regGenero_1 = leerCharEspacio(regGenero_1);
               printf("Genero 2: ");
-              scanf("%s", regGenero_2);
+              //scanf("%s", regGenero_2);
+              regGenero_2 = leerCharEspacio(regGenero_2);
 
-              usuarioRegistro = crearUsuario(regUsuario, regContra);
+              usuarioRegistro = crearUsuario(regUsuario, regContra, regArtista_1, regArtista_2, regGenero_1, regGenero_2);
 
               insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
 
-              mostrarMapaUsuario(mapaUsuario);
+              //mostrarMapaUsuario(mapaUsuario);
+              system("clear");
 
               printf("SE HA REGISTRADO CORRECTAMENTE\n");
 
             }else{
 
-                printf("ESTE USUARIO YA SE ENCUENTRA REGISTRADO\n");
+              system("clear");
+              printf("ESTE USUARIO YA SE ENCUENTRA REGISTRADO\n");
 
             }
 
@@ -186,7 +192,8 @@ int main(){
     
                 system("clear");
 
-                if( !(strcmp (inicioContrasena, usuarioIngreso->contrasena)) ){/**inicio de sesion valido, entra al menu principal de la aplicacion**/
+                if( (strcmp (inicioContrasena, usuarioIngreso->contrasena)) == 0 ){
+                  /**inicio de sesion valido, entra al menu principal de la aplicacion**/
 
                     printf("Inicio sesion correctamente\n");
 
@@ -314,10 +321,19 @@ int main(){
 
                                         printf("Ingrese un genero de música para recibir una recomendacion:\n");
                                         //getchar();
-                                        fflush(stdin);
+                                        /**fflush(stdin);
                                         scanf("%s",input);
                                         getchar();
                                         printf("%s", input);
+                                        cancion_por_genero(input, mapaGenero);**/
+
+                                        input = leerCharEspacio(input);
+
+                                        //podrias borrar eso y ocupar la funcione
+                                        //lo dejare comentado aca abajo
+                                        //en teoria deberia funcionar igual que el de arriba
+                                        /**input = leerCharEspacio(input);**/
+
                                         cancion_por_genero(input, mapaGenero);
 
                                         break;
@@ -327,10 +343,6 @@ int main(){
                                         artistaRecomEscogido = (char*) malloc(sizeof(char)*100);
 
                                         printf("Ingrese un artista para recibir una recomendacion\n");
-                                        //scanf("%s", artistaRecomEscogido);//falta arreglar
-                                        /**fflush(stdin);
-                                        getchar();
-                                        scanf("%[^\n]s",artistaRecomEscogido);**/
 
                                         artistaRecomEscogido = leerCharEspacio(artistaRecomEscogido);
 
@@ -357,10 +369,13 @@ int main(){
 
                                 case 3:
 
+                                  printf("TOP 10\n");
+
                                   break;
 
                                 case 4:
 
+                                  //opcion atras
                                   break;
 
                                 default:
@@ -379,22 +394,29 @@ int main(){
                         case 3:
 
                             printf("CANCIONES\n");
-                            canciones_del_usuario(mapaUsuario, usuarioIngreso);
+                            canciones_del_usuario(mapaUsuario, mapaCanciones, usuarioIngreso);
+                            escribir_txt(mapaUsuario);
                             break;
 
                         case 4:
 
                             printf("ARTISTAS\n");
+                            artistas_del_usuario(mapaUsuario, mapaArtista, usuarioIngreso);
                             break;
 
                         case 5:
 
                             printf("GENEROS\n");
+                            generosdelUsuario(mapaUsuario, mapaGenero, usuarioIngreso);
+                            
                             break;
 
                         case 6:
 
                             printf("CERRAR SESION\n");
+                            //inicioUsuario =
+                            //inicioContrasena = 
+                            //usuarioIngreso =
                             break;
 
                         default:
@@ -413,6 +435,7 @@ int main(){
                 }else{
 
                   printf("Datos incorrectos\n");
+                  
                 }
 
             }
@@ -421,7 +444,7 @@ int main(){
 
         default:
 
-            printf("Opcion invalida");
+            printf("Opcion invalida\n");
             break;
 
         }

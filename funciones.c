@@ -83,11 +83,22 @@ void *crearUsuarioCSV(FILE *archivo, char *linea){
 
 }
 */
-void *crearUsuario(char* user, char* contra){
+tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artista2, char* genero1, char* genero2){
 
-    tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
+  tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
-    usuario->nombre = user;
+  usuario->artistas_favoritos = list_create((void *) usuario->artistas_favoritos);
+  usuario->generos_favoritos = list_create((void *) usuario->generos_favoritos);
+  usuario->canciones_favoritas = list_create((void *) usuario->canciones_favoritas);
+
+  list_push_back(usuario->artistas_favoritos, artista1);
+  list_push_back(usuario->artistas_favoritos, artista2);
+  list_push_back(usuario->generos_favoritos, genero1);
+  list_push_back(usuario->generos_favoritos, genero2);
+
+  list_push_back(usuario->canciones_favoritas, NULL);
+
+  usuario->nombre = user;
 	usuario->contrasena = contra;
 
 	return usuario;
@@ -163,7 +174,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     FILE *archivo;
     char linea[1001];
-    int cont=0;
+    int cont=0, aux=0;
 
     //LEER DATOS PARA MAPA DE USUARIOS.
 
@@ -176,7 +187,13 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
         //ExitProcess(0);
     }
 
-    while(cont<5 /**fgets(linea, 1000, archivo) != NULL**/)
+    while(fgets(linea, 1000, archivo)){
+      aux = aux + 1;
+    }
+    aux = (aux/3);
+    rewind(archivo);
+
+    while(cont < aux/**CAMBIAR ESTO -- fgets(linea, 1000, archivo) != NULL**/)
     {
       tipoUsuario *datoUsuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
@@ -314,10 +331,11 @@ void mostrarMapaUsuario(Map* mapa){
 
     while(cancion != NULL){
 
-      printf("%s, ", cancion);
+      //printf("%s, ", cancion);
+      printf("%s", cancion);
 
       cancion = list_next(datoUsuario->canciones_favoritas);
-
+      if( cancion != NULL ) printf(", ");
     }
 
     printf("\n");
@@ -328,9 +346,10 @@ void mostrarMapaUsuario(Map* mapa){
   
     while(artista != NULL ){
 
-      printf("%s, ", artista);
+      printf("%s", artista);
 
       artista = list_next(datoUsuario->artistas_favoritos);
+      if( artista != NULL ) printf(", ");
 
     }
 
@@ -342,9 +361,10 @@ void mostrarMapaUsuario(Map* mapa){
 
     while(genero != NULL){
 
-      printf("%s, ", genero);
+      printf("%s", genero);
 
       genero = list_next(datoUsuario->generos_favoritos);
+      if( genero != NULL ) printf(", ");
 
     }
 
@@ -458,7 +478,8 @@ void mostrarMapaArtistaRegistro(Map* mapa){
       artista3 = list_next(listaArtista);
       //if(artista3 == NULL) break;
 
-      printf("%d.-%s %3d.-%s %3d.-%s\n", i, artista, i+1, artista2, i+2, artista3);
+      //printf("%d.-%s %3d.-%s %3d.-%s\n", i, artista, i+1, artista2, i+2, artista3);
+      printf("%d.-%s \t%d.-%s \t%d.-%s\n", i, artista, i+1, artista2, i+2, artista3);
 
     }
 
@@ -653,24 +674,25 @@ void cancionPorArtista(Map* mapaArtista, char* artistaEscogido){
 
 }
 
-void canciones_del_usuario(Map* mapaUsuario, tipoUsuario* usuarioIngreso){
+void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* usuarioIngreso){
 
-  //list *lista_canciones = list_create((void*)lista_canciones);
 
   char* cancion;
   char* cancion_2;
+  char* cancion_eliminar;
   int op;
+  tipoCancion* busqueda_cancion = (tipoCancion*) malloc(sizeof(tipoCancion));
 
-  cancion = list_first(usuarioIngreso->canciones_favoritas);
-  printf("Estas son tus canciones favoritas:\n");
-  while(cancion != NULL){
+  while(1){
+    
+    cancion = list_first(usuarioIngreso->canciones_favoritas);
+    printf("Estas son tus canciones favoritas:\n");
+    while(cancion != NULL){
 
-    printf("%s\n", cancion);
-    cancion = list_next(usuarioIngreso->canciones_favoritas);
-  }
-  printf("{---------------------}\n");
-
-  //while(1){
+      printf("%s\n", cancion);
+      cancion = list_next(usuarioIngreso->canciones_favoritas);
+    }
+    printf("{---------------------}\n");
 
     printf("Que quieres hacer\n");
     printf("1.Agregar una cancion\n");
@@ -684,17 +706,54 @@ void canciones_del_usuario(Map* mapaUsuario, tipoUsuario* usuarioIngreso){
       case 1:
 
         printf("Escribe la cancion que quieres agregar:\n");
-        cancion_2 = (char*) malloc(sizeof(char)*100);
-        fflush(stdin);
-        getchar();
-        scanf("%[^\n]s",cancion_2);
+        cancion_2 = leerCharEspacio(cancion_2);
+        system("clear");
+        
+        busqueda_cancion = firstMap(mapaCanciones); //me coloco en el primer dato del mapa canciones
 
+        while(busqueda_cancion != NULL){
 
+          if(strcmp(cancion_2, busqueda_cancion->nombre) == 0){
+            
+            list_push_back(usuarioIngreso->canciones_favoritas, busqueda_cancion->nombre);
+            //usuario_temp = firstMap(mapaUsuario);
+            eraseMap(mapaUsuario, usuarioIngreso->nombre);
+            insertMap(mapaUsuario, usuarioIngreso->nombre, usuarioIngreso);
+            //mostrarMapaUsuario(mapaUsuario);
+            printf("Cancion agregada Exitosamente !!!\n");
+            printf("{-------------------------------}\n\n");
+            break;
 
-        printf("%s\n",cancion_2);
+          }
+
+          busqueda_cancion = nextMap(mapaCanciones);
+          
+        }
+        if (busqueda_cancion == NULL) printf("La cancion que está intentando agregar no existe :(\n");
+
         break;
 
       case 2:
+        
+        printf("Escribe la cancion que quieres eliminar:\n");
+        cancion_eliminar = leerCharEspacio(cancion_eliminar);
+        system("clear");
+
+        cancion = list_first(usuarioIngreso->canciones_favoritas);
+        while(cancion != NULL){
+
+          if(strcmp(cancion, cancion_eliminar) == 0){
+            list_pop_current(usuarioIngreso->canciones_favoritas);
+            printf("Cancion eliminada Exitosamente !\n");
+            //mostrarMapaUsuario(mapaUsuario);
+            break;
+            
+          }
+          cancion = list_next(usuarioIngreso->canciones_favoritas);
+        }
+
+        if(cancion == NULL) printf("La cancion que ingresó no la tiene agregada\n");
+        //printf("La cancion que ingresó no la tiene agregada\n");
 
         break;
 
@@ -707,9 +766,206 @@ void canciones_del_usuario(Map* mapaUsuario, tipoUsuario* usuarioIngreso){
         break;
       
     }
+    
+    if(op == 3) break;
 
-    //break;
-  //}
+  }
+
+}
+
+void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuarioIngreso){
+
+
+  char* artista;
+  char* artista_2;
+  char* cancion_eliminar;
+  int op;
+  tipoArtista* busqueda_artista = (tipoArtista*) malloc(sizeof(tipoArtista));
+
+  while(1){
+
+    artista = list_first(usuarioIngreso->artistas_favoritos);
+    printf("Estos son tus artistas favoritos:\n");
+    while(artista != NULL){
+
+      printf("%s\n", artista);
+      artista = list_next(usuarioIngreso->artistas_favoritos);
+    }
+    printf("{---------------------}\n");
+
+    printf("Que quieres hacer\n");
+    printf("1.Agregar un artista\n");
+    printf("2.Quitar un artista\n");
+    printf("3.Atras\n");
+    printf("Escriba el numero de la opcion: ");
+
+    scanf("%d", &op);
+
+    switch(op){
+
+      case 1:
+
+        printf("Escribe el Artista que quieres agregar:\n");
+        artista_2 = leerCharEspacio(artista_2);
+        
+        system("clear");
+        busqueda_artista = firstMap(mapaArtista); //me coloco en el primer dato del mapa artistas
+
+        while(busqueda_artista != NULL){
+
+          if(strcmp(artista_2, busqueda_artista->nombre) == 0){
+            
+            list_push_back(usuarioIngreso->artistas_favoritos, busqueda_artista->nombre);
+
+            eraseMap(mapaUsuario, usuarioIngreso->nombre);
+            insertMap(mapaUsuario, usuarioIngreso->nombre, usuarioIngreso);
+            //mostrarMapaUsuario(mapaUsuario);
+            printf("Artista agregado Exitosamente !!!\n");
+            printf("{-------------------------------}\n\n");
+            break;
+
+          }
+
+          busqueda_artista = nextMap(mapaArtista);
+          
+        }
+        if (busqueda_artista == NULL) printf("El artista que está intentando agregar no existe :(\n");
+
+        break;
+
+      case 2:
+        
+        printf("Escribe el artista que quieres eliminar:\n");
+        cancion_eliminar = leerCharEspacio(cancion_eliminar);
+        system("clear");
+
+        artista = list_first(usuarioIngreso->artistas_favoritos);
+        while(artista != NULL){
+
+          if(strcmp(artista, cancion_eliminar) == 0){
+            list_pop_current(usuarioIngreso->artistas_favoritos);
+            printf("Artista eliminado Exitosamente !\n");
+            //mostrarMapaUsuario(mapaUsuario);
+            break;
+            
+          }
+          artista = list_next(usuarioIngreso->artistas_favoritos);
+        }
+
+        if(artista == NULL) printf("El artista que ingresó no lo tiene agregado\n");
+
+        break;
+
+      case 3:
+
+        break;
+
+      default:
+
+        break;
+      
+    }
+    
+    
+    if(op == 3) break;
+
+  }
+
+}
+
+void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioIngreso ){
+
+  char* generoPrinteo;
+  char* generoAgregar;
+  char* generoQuitar;
+  char* listaGeneroQuitar;
+
+  int op;
+
+  tipoGenero* busquedaGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
+
+  listaGeneroQuitar = list_first(usuarioIngreso->generos_favoritos);
+  generoPrinteo = list_first(usuarioIngreso->generos_favoritos);
+
+  printf("Estos son tus generos favoritos:\n");
+
+  while(generoPrinteo != NULL){
+
+    printf("%s\n", generoPrinteo);
+    generoPrinteo = list_next(usuarioIngreso->generos_favoritos);
+    
+  }
+  printf("{---------------------}\n");
+
+  while(1){
+
+    printf("Que quieres hacer\n");
+    printf("1.Agregar un genero\n");
+    printf("2.Quitar un genero\n");
+    printf("3.Atras\n");
+    printf("Escriba el numero de la opcion: ");
+    scanf("%i", &op);
+
+    switch(op){
+
+      case 1:
+        //AGREGAR GENERO
+        printf("Escribe el genero que quieres agregar:\n");
+        generoAgregar = leerCharEspacio(generoAgregar);
+        
+        busquedaGenero = firstMap(mapaGenero);
+
+        while(busquedaGenero != NULL){
+
+          if(strcmp(generoAgregar, busquedaGenero->nombre) == 0){
+            
+            list_push_back(usuarioIngreso->generos_favoritos, busquedaGenero->nombre);
+            printf("Se ha agregado correctamente\n");
+            
+          }
+
+          busquedaGenero = nextMap(mapaGenero);
+
+        }
+        
+        break;
+
+      case 2:
+        //QUITAR GENERO
+        printf("Escribe el genero que quiere quitar:\n");
+        generoQuitar = leerCharEspacio(generoQuitar);
+
+        listaGeneroQuitar = list_first(usuarioIngreso->generos_favoritos);
+
+        while( listaGeneroQuitar != NULL ){
+
+          if( strcmp(generoQuitar, listaGeneroQuitar) == 0 ){
+
+            list_pop_current(usuarioIngreso->generos_favoritos);
+            listaGeneroQuitar = list_next(usuarioIngreso->generos_favoritos);
+            printf("Se ha quitado correctamente\n");
+
+          }
+
+          listaGeneroQuitar = list_next(usuarioIngreso->generos_favoritos);
+
+        }
+
+        break;
+
+      case 3:
+        //ATRAS
+        break;
+
+      default:
+
+        break;
+      
+    }
+
+    if(op == 3) break; 
+
+  }
 
 }
 
@@ -724,5 +980,61 @@ char* leerCharEspacio( char* palabra ){
   //printf("%s\n",artista);
 
   return palabra;
+
+}
+
+void escribir_txt(Map* mapaUsuario){
+
+  FILE* flujo = fopen("usuarios.txt", "w");
+  char* dato;
+  tipoUsuario* usuario = (tipoUsuario*) malloc(sizeof(tipoUsuario));
+
+  if( flujo == NULL ){
+    perror("Error en la lectura de archivo");
+  }
+  else{
+
+    usuario = firstMap(mapaUsuario);
+
+    while(usuario != NULL){
+
+      fprintf(flujo, "%s,", usuario->nombre);
+      fprintf(flujo, "%s", usuario->contrasena);
+
+      dato = list_first(usuario->canciones_favoritas);
+      while(dato != NULL){
+
+        fprintf(flujo, ",%s", dato);
+        dato = list_next(usuario->canciones_favoritas);
+      }
+      fprintf(flujo, "\n");
+
+      dato = list_first(usuario->artistas_favoritos);
+      while(dato != NULL){
+
+        fprintf(flujo, "%s", dato);
+        dato = list_next(usuario->artistas_favoritos);
+        if(dato != NULL) fprintf(flujo, ",");
+      }
+      fprintf(flujo, "\n");
+
+      dato = list_first(usuario->generos_favoritos);
+      while(dato != NULL){
+
+        fprintf(flujo, "%s", dato);
+        dato = list_next(usuario->generos_favoritos);
+        if(dato != NULL) fprintf(flujo, ",");
+      }
+      fprintf(flujo, "\n");
+
+      usuario = nextMap(mapaUsuario);
+
+    }
+
+    fflush(flujo);
+    fclose(flujo);
+
+    printf("TXT SOBRESCRITO");
+  }
 
 }

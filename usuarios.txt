@@ -1,9 +1,15 @@
+pablo,4444,Hello,Piano man
+TWICE,BTS
+Pop,Rap
 prindoxx,4alhabla,Hello,Three little birds,Back to black
 Eve,Kana-Boon
 Rap,Soul
-iroh,omniman,Heart of glass,Piano man,Night fever
+iroh,omniman,Heart of glass,Night fever,Hello,Piano man
 Blondie,Depeche Mode
-New wave,Disco
+New wave,Disco,Rap,Pop,Soul,Hard rock
 darienBowie,botines69,Girls & Boys,Rivers of Babylon,Sabotage
 David Bowie,The Smiths
 Post-punk,New wave
+jefte,ponce,Piano man
+BTS,BoneyM
+EDM,Rock

@@ -53,7 +53,7 @@ void *crearArtistaCSV(char *linea);
 
 void *crearGeneroCSV(char *linea);
 
-void *crearUsuario(char* user, char* contra);
+tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artista2, char* genero1, char* genero2);
 
 void llenarBD(Map *, Map *, Map *, Map *);
 
@@ -77,8 +77,14 @@ void cancion_por_genero(char* , Map*);
 
 void cancionPorArtista(Map* , char*);
 
-void canciones_del_usuario(Map*, tipoUsuario*);
+void canciones_del_usuario(Map*, Map*, tipoUsuario*);
+
+void artistas_del_usuario(Map*, Map*, tipoUsuario*);
+
+void generosdelUsuario( Map*, Map*, tipoUsuario* );
 
 char* leerCharEspacio( char* );
+
+void escribir_txt(Map*);
 
 #endif
