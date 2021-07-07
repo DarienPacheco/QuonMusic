@@ -1,6 +1,7 @@
 #include "list.h"
 #include "funciones.h"
 #include "map.h"
+#include "treemap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -45,45 +46,8 @@ const char *get_csv_field (char * tmp, int k) {
 
     return NULL;
 }
-/*
-void *crearUsuarioCSV(FILE *archivo, char *linea){
 
-  archivo = fopen("usuarios.txt","r");
-  if(archivo == NULL)
-  {
-    printf("ERROR AL ABRIR EL ARCHIVO\n");
-    return 0;
-  }
-  
-  tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
-
-  fgets(linea, 1000, archivo);
-
-  usuario->nombre = (char*) get_csv_field(linea, 0);
-	usuario->contrasena = (char*) get_csv_field(linea, 1);
-
-  char* artista = "error";
-    
-  fgets(linea, 1000, archivo);
-  usuario->artistas_favoritos = list_create((void *)usuario->artistas_favoritos);
-
-  for (int i=0 ; artista ; i++){
-
-    artista = (char*) get_csv_field(linea, i);
-
-    if (artista != NULL){
-      list_push_back(usuario->artistas_favoritos, artista);
-    }
-
-  }
-  
-  
-  
-	return usuario;
-
-}
-*/
-tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artista2, char* genero1, char* genero2){
+tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artista2, char* genero1, char* genero2){ //crea un usuario a partir de los datos dados en el registrar
 
   tipoUsuario *usuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
@@ -91,6 +55,7 @@ tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artist
   usuario->generos_favoritos = list_create((void *) usuario->generos_favoritos);
   usuario->canciones_favoritas = list_create((void *) usuario->canciones_favoritas);
 
+  //se insertan los datos en las listas del usuario
   list_push_back(usuario->artistas_favoritos, artista1);
   list_push_back(usuario->artistas_favoritos, artista2);
   list_push_back(usuario->generos_favoritos, genero1);
@@ -105,7 +70,7 @@ tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artist
 
 }
 
-void *crearCancionCSV(char *linea){
+void *crearCancionCSV(char *linea){ //crea un dato tipo cancion con una linea extraida del canciones.txt
 
   tipoCancion *cancion = (tipoCancion*) malloc (sizeof(tipoCancion));
 
@@ -121,7 +86,7 @@ void *crearCancionCSV(char *linea){
 
 }
 
-void *crearArtistaCSV(char *linea){
+void *crearArtistaCSV(char *linea){ //crea un dato tipo artista con una linea extraida del canciones.txt
 
     tipoArtista *artista = (tipoArtista*) malloc (sizeof(tipoArtista));
 
@@ -147,7 +112,7 @@ void *crearArtistaCSV(char *linea){
 
 }
 
-void *crearGeneroCSV(char *linea){
+void *crearGeneroCSV(char *linea){ //crea un dato tipo genero con una linea extraida del canciones.txt
 
     tipoGenero *genero = (tipoGenero*) malloc (sizeof(tipoGenero));
 
@@ -170,7 +135,8 @@ void *crearGeneroCSV(char *linea){
 
 }
 
-void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaGenero){
+//esta funcion llena nustra base datos
+void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaGenero, TreeMap* arbol_canciones, TreeMap* arbolTop10){
 
     FILE *archivo;
     char linea[1001];
@@ -183,21 +149,22 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     archivo = fopen("usuarios.txt","r");
     if(archivo == NULL)
     {
-        printf("ERROR AL ABRIR EL ARCHIVO\n");
-        //ExitProcess(0);
+        perror("ERROR AL ABRIR EL ARCHIVO\n");
+        
     }
 
+    //se lee el usuarios.txt y se cuenta la cantidad de lineas para dividirlas por 3 y obtener la cantidad de usuarios
     while(fgets(linea, 1000, archivo)){
       aux = aux + 1;
     }
-    aux = (aux/3);
+    aux = (aux/3); 
     rewind(archivo);
 
-    while(cont < aux/**CAMBIAR ESTO -- fgets(linea, 1000, archivo) != NULL**/)
+    while(cont < aux) //se leen los datos del usuario y se insertan en el mapa usuarios
     {
       tipoUsuario *datoUsuario = (tipoUsuario*) malloc (sizeof(tipoUsuario));
 
-      fgets(linea, 1000, archivo);
+      fgets(linea, 1000, archivo);//primera linea de nombre,contraseña y lista de canciones
       datoUsuario->canciones_favoritas = list_create((void*) datoUsuario->canciones_favoritas);
 
       datoUsuario->nombre = (char*) get_csv_field(linea, 0);
@@ -216,7 +183,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
       char* artista = "error";
     
-      fgets(linea, 1000, archivo);
+      fgets(linea, 1000, archivo);//segunda linea de artistas favoritos
       datoUsuario->artistas_favoritos = list_create((void *)datoUsuario->artistas_favoritos);
 
       for (int i=0 ; artista ; i++){
@@ -229,7 +196,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
       }
 
-      fgets(linea, 1000, archivo);
+      fgets(linea, 1000, archivo);//tercera linea de generos favoritos
       datoUsuario->generos_favoritos = list_create((void*) datoUsuario->generos_favoritos);
 
       char* genero = "error";
@@ -251,7 +218,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
 
     fclose(archivo);
 
-    //LEER DATOS PARA MAPA DE CANCIONES.
+    //LEER DATOS PARA MAPA DE CANCIONES, ARBOL TOP10 Y ARBOL CANCIONES.
 
     tipoCancion *datoCancion;
 
@@ -266,6 +233,9 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     {
         datoCancion = crearCancionCSV(linea);
         insertMap(mapaCanciones, datoCancion->id, datoCancion);
+        insertTreeMap(arbol_canciones, datoCancion->nombre, datoCancion);
+        insertTreeMap(arbolTop10,&(datoCancion->puntaje), datoCancion);
+
     }
 
     fclose(archivo);
@@ -309,7 +279,7 @@ void llenarBD(Map *mapaCanciones, Map* mapaUsuario, Map* mapaArtista, Map* mapaG
     fclose(archivo);
 }
 
-void mostrarMapaUsuario(Map* mapa){
+void mostrarMapaUsuario(Map* mapa){ //muestra por pantalla el mapa de usuarios
 
   tipoUsuario* datoUsuario = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
@@ -329,9 +299,8 @@ void mostrarMapaUsuario(Map* mapa){
 
     cancion = list_first(datoUsuario->canciones_favoritas);
 
-    while(cancion != NULL){
+    while(cancion != NULL){ //imprime todas las canciones del usuario
 
-      //printf("%s, ", cancion);
       printf("%s", cancion);
 
       cancion = list_next(datoUsuario->canciones_favoritas);
@@ -344,7 +313,7 @@ void mostrarMapaUsuario(Map* mapa){
 
     artista = list_first(datoUsuario->artistas_favoritos);
   
-    while(artista != NULL ){
+    while(artista != NULL ){ //imprime todos los artistas del usuario
 
       printf("%s", artista);
 
@@ -359,7 +328,7 @@ void mostrarMapaUsuario(Map* mapa){
 
     genero = list_first(datoUsuario->generos_favoritos);
 
-    while(genero != NULL){
+    while(genero != NULL){ //imprime todos los generos del usuario
 
       printf("%s", genero);
 
@@ -379,7 +348,7 @@ void mostrarMapaUsuario(Map* mapa){
 
 }
 
-void mostrarMapaCanciones(Map* mapa){
+void mostrarMapaCanciones(Map* mapa){ //muestra por pantalla el mapa canciones
 
     tipoCancion* datoCancion = (tipoCancion*) malloc(sizeof(tipoCancion));
 
@@ -404,7 +373,7 @@ void mostrarMapaCanciones(Map* mapa){
     free(datoCancion);
 }
 
-void mostrarMapaArtista(Map* mapa){
+void mostrarMapaArtista(Map* mapa){ //muestra por pantalla el mapa artistas
 
     tipoArtista* datoArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
     char* cancion;
@@ -437,7 +406,7 @@ void mostrarMapaArtista(Map* mapa){
     free(datoArtista);
 }
 
-void mostrarMapaArtistaRegistro(Map* mapa){
+void mostrarMapaArtistaRegistro(Map* mapa){ //muestra por pantalla los artistas ala hora de registrarse
 
   tipoArtista* oArtista = (tipoArtista*) malloc(sizeof(tipoArtista));
 
@@ -465,10 +434,6 @@ void mostrarMapaArtistaRegistro(Map* mapa){
   
   while(artista != NULL ){
 
-    /**printf("%s \n", artista);
-
-    artista = list_next(listaArtista);**/
-
     for(int i=1; artista != NULL; i=i+3){
 
       artista = list_next(listaArtista);
@@ -478,7 +443,6 @@ void mostrarMapaArtistaRegistro(Map* mapa){
       artista3 = list_next(listaArtista);
       //if(artista3 == NULL) break;
 
-      //printf("%d.-%s %3d.-%s %3d.-%s\n", i, artista, i+1, artista2, i+2, artista3);
       printf("%d.-%s \t%d.-%s \t%d.-%s\n", i, artista, i+1, artista2, i+2, artista3);
 
     }
@@ -490,7 +454,7 @@ void mostrarMapaArtistaRegistro(Map* mapa){
 
 }
 
-void mostrarMapaGenero(Map* mapa){
+void mostrarMapaGenero(Map* mapa){ //muestra por pantalla el mapa de los generos
 
     tipoGenero* datoGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
     char* cancion;
@@ -523,7 +487,7 @@ void mostrarMapaGenero(Map* mapa){
     free(datoGenero);
 }
 
-void mostrarMapaGeneroRegistro(Map* mapa){
+void mostrarMapaGeneroRegistro(Map* mapa){ //muestra por pantalla los generos a la hora de registrarse
 
   tipoGenero* oGenero = (tipoGenero*) malloc(sizeof(tipoGenero));
 
@@ -556,6 +520,7 @@ void mostrarMapaGeneroRegistro(Map* mapa){
   
 }
 
+//recomienda artistas según el genero de los artistas que tenga agregado el usuario
 void recomendacion_de_artistas(Map* mapaArtista, tipoUsuario* usuarioIngreso){
 
   list *lista_artistas = list_create((void*)lista_artistas);
@@ -569,17 +534,17 @@ void recomendacion_de_artistas(Map* mapaArtista, tipoUsuario* usuarioIngreso){
   artista = list_first(usuarioIngreso->artistas_favoritos);
 
   printf("Te recomendamos estos artistas:\n");
+  printf("{-------------------------------}\n");
 
-  while (artista != NULL){
+  while (artista != NULL){ //se recorre la lista de los artistas que tiene el usuario
 
     oArtista = searchMap(mapaArtista, artista);
-    //printf("%s \n", oArtista->genero);
 
     oArtistaBusqueda = firstMap(mapaArtista);
-    while(oArtistaBusqueda != NULL){
+    while(oArtistaBusqueda != NULL){//se buscan artistas que coincidan con los generos del artista que tiene agregado el usuario
 
       if( !(strcmp(oArtistaBusqueda->genero, oArtista->genero)) ){
-        list_push_back(lista_artistas, oArtistaBusqueda->nombre);
+        list_push_back(lista_artistas, oArtistaBusqueda->nombre); //se guardan en esta lista los artistas que precenten una coincidencia
       }
 
       oArtistaBusqueda = nextMap(mapaArtista);
@@ -592,16 +557,18 @@ void recomendacion_de_artistas(Map* mapaArtista, tipoUsuario* usuarioIngreso){
 
   artista2 = list_first(lista_artistas);
 
-  while(artista2 != NULL){
+  while(artista2 != NULL){ //se muestran por pantalla los artistas recomendados
 
     printf("%s\n", artista2);
     artista2 = list_next(lista_artistas);
 
   }
+  printf("{-------------------------------}\n\n");
 
 }
 
 void recomendacion_de_generos_fav(Map* mapaGenero, tipoUsuario* usuarioIngreso){
+  //recibimos los datos del usuario y el mapaGenero como parametros desde el main con estos datos buscamos la lista generos_favoritos del usuario y la recorremos, con los generos favoritos que obtenemos de la lista generos_favoritos buscamos en el mapaGenero y en base a eso imprimimos los nombres de las canciones que tiene el genero en su listaCanciones 
 
   char* cancion="";
   char* genero_usuario;
@@ -612,6 +579,7 @@ void recomendacion_de_generos_fav(Map* mapaGenero, tipoUsuario* usuarioIngreso){
   genero_usuario = list_first(usuarioIngreso->generos_favoritos);
 
   printf("Te recomendamos estas canciones según tus generos favoritos:\n");
+  printf("{-------------------------------}\n");
 
   while( genero_usuario != NULL ){
 
@@ -632,6 +600,8 @@ void recomendacion_de_generos_fav(Map* mapaGenero, tipoUsuario* usuarioIngreso){
 
   }
 
+  printf("{-------------------------------}\n\n");
+
 }
 
 void cancion_por_genero(char* input, Map* mapaGenero){
@@ -643,12 +613,21 @@ void cancion_por_genero(char* input, Map* mapaGenero){
   //printf("%s",oGenero->nombre);
   cancion = list_first(oGenero->listaCanciones);
 
-  printf("Te recomendamos esta cancion: \n");
-  printf("%s\n", cancion);
+  system("@cls||clear");
+  printf("Te recomendamos estas canciones: \n");
+
+  while ( cancion!= NULL ){
+
+    printf("%s\n", cancion);
+    
+    cancion = list_next(oGenero->listaCanciones);
+
+  }
 
 }
 
 void cancionPorArtista(Map* mapaArtista, char* artistaEscogido){
+  //recibe un artista(char*) desde el main y lo buscamos  en el mapaArtista para poder imprimir sus canciones 
 
   list *listaCanciones = list_create((void*)listaCanciones);
 
@@ -675,6 +654,7 @@ void cancionPorArtista(Map* mapaArtista, char* artistaEscogido){
 }
 
 void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* usuarioIngreso){
+  //con esta funcion podemos ver los artistas que tiene agregado el usuario en su lista de artistas favoritos y agregar o quitar algun artista
 
 
   char* cancion;
@@ -682,23 +662,26 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
   char* cancion_eliminar;
   int op;
   tipoCancion* busqueda_cancion = (tipoCancion*) malloc(sizeof(tipoCancion));
+  tipoCancion* eliminarCancion = (tipoCancion*) malloc(sizeof(tipoCancion));
 
   while(1){
     
     cancion = list_first(usuarioIngreso->canciones_favoritas);
     printf("Estas son tus canciones favoritas:\n");
+    printf("{-------------------------------}\n");
     while(cancion != NULL){
 
       printf("%s\n", cancion);
       cancion = list_next(usuarioIngreso->canciones_favoritas);
     }
-    printf("{---------------------}\n");
+    printf("{-------------------------------}\n");
 
     printf("Que quieres hacer\n");
     printf("1.Agregar una cancion\n");
     printf("2.Quitar una cancion\n");
     printf("3.Atras\n");
-
+    printf("Escriba el numero de la opcion: ");
+    
     scanf("%d", &op);
 
     switch(op){
@@ -707,13 +690,15 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
 
         printf("Escribe la cancion que quieres agregar:\n");
         cancion_2 = leerCharEspacio(cancion_2);
-        system("clear");
+        system("@cls||clear");
         
         busqueda_cancion = firstMap(mapaCanciones); //me coloco en el primer dato del mapa canciones
 
         while(busqueda_cancion != NULL){
 
           if(strcmp(cancion_2, busqueda_cancion->nombre) == 0){
+
+            busqueda_cancion->puntaje++;
             
             list_push_back(usuarioIngreso->canciones_favoritas, busqueda_cancion->nombre);
             //usuario_temp = firstMap(mapaUsuario);
@@ -734,15 +719,33 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
         break;
 
       case 2:
+
+        eliminarCancion = firstMap(mapaCanciones); //me coloco en el primer dato del mapa canciones
         
         printf("Escribe la cancion que quieres eliminar:\n");
         cancion_eliminar = leerCharEspacio(cancion_eliminar);
-        system("clear");
+        system("@cls||clear");
 
         cancion = list_first(usuarioIngreso->canciones_favoritas);
+
         while(cancion != NULL){
 
           if(strcmp(cancion, cancion_eliminar) == 0){
+
+            while(eliminarCancion != NULL){
+
+              if(strcmp(cancion, eliminarCancion->nombre) == 0){
+
+                eliminarCancion = searchMap(mapaCanciones, eliminarCancion->id);
+                
+                if ( eliminarCancion->puntaje >= 1 ) eliminarCancion->puntaje--;
+
+              }
+
+              eliminarCancion = nextMap(mapaCanciones);
+
+            }
+
             list_pop_current(usuarioIngreso->canciones_favoritas);
             printf("Cancion eliminada Exitosamente !\n");
             //mostrarMapaUsuario(mapaUsuario);
@@ -758,7 +761,7 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
         break;
 
       case 3:
-
+        system("@cls||clear");
         break;
 
       default:
@@ -774,6 +777,7 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
 }
 
 void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuarioIngreso){
+  //con esta funcion podemos ver los artistas que tiene agregado el usuario en su lista de artistas favoritos y agregar o quitar algun artista
 
 
   char* artista;
@@ -786,12 +790,13 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
 
     artista = list_first(usuarioIngreso->artistas_favoritos);
     printf("Estos son tus artistas favoritos:\n");
+    printf("{-------------------------------}\n");
     while(artista != NULL){
 
       printf("%s\n", artista);
       artista = list_next(usuarioIngreso->artistas_favoritos);
     }
-    printf("{---------------------}\n");
+    printf("{-------------------------------}\n");
 
     printf("Que quieres hacer\n");
     printf("1.Agregar un artista\n");
@@ -800,6 +805,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
     printf("Escriba el numero de la opcion: ");
 
     scanf("%d", &op);
+    system("@cls||clear");
 
     switch(op){
 
@@ -808,7 +814,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
         printf("Escribe el Artista que quieres agregar:\n");
         artista_2 = leerCharEspacio(artista_2);
         
-        system("clear");
+        system("@cls||clear");
         busqueda_artista = firstMap(mapaArtista); //me coloco en el primer dato del mapa artistas
 
         while(busqueda_artista != NULL){
@@ -837,7 +843,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
         
         printf("Escribe el artista que quieres eliminar:\n");
         cancion_eliminar = leerCharEspacio(cancion_eliminar);
-        system("clear");
+        system("@cls||clear");
 
         artista = list_first(usuarioIngreso->artistas_favoritos);
         while(artista != NULL){
@@ -857,7 +863,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
         break;
 
       case 3:
-
+        //ATRAS
         break;
 
       default:
@@ -874,6 +880,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
 }
 
 void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioIngreso ){
+  //con esta funcion podemos ver los generos que tiene agregado el usuario en su lista de generos favoritos y agregar o quitar algun genero
 
   char* generoPrinteo;
   char* generoAgregar;
@@ -888,6 +895,7 @@ void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioI
   generoPrinteo = list_first(usuarioIngreso->generos_favoritos);
 
   printf("Estos son tus generos favoritos:\n");
+  printf("{-------------------------------}\n");
 
   while(generoPrinteo != NULL){
 
@@ -895,7 +903,7 @@ void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioI
     generoPrinteo = list_next(usuarioIngreso->generos_favoritos);
     
   }
-  printf("{---------------------}\n");
+  printf("{-------------------------------}\n");
 
   while(1){
 
@@ -905,6 +913,8 @@ void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioI
     printf("3.Atras\n");
     printf("Escriba el numero de la opcion: ");
     scanf("%i", &op);
+
+    system("@cls||clear");
 
     switch(op){
 
@@ -970,6 +980,7 @@ void generosdelUsuario( Map* mapaUsuario, Map* mapaGenero, tipoUsuario* usuarioI
 }
 
 char* leerCharEspacio( char* palabra ){
+  //esta funcion lee un string con espacios y lo retorna, con esta funcion podemos leer canciones con espacios, artistas y/o generos que contengan espacios sin ningun problema
 
   palabra = malloc(sizeof(char)*100);
 
@@ -977,13 +988,44 @@ char* leerCharEspacio( char* palabra ){
   getchar();
   scanf("%[^\n]s",palabra);
 
-  //printf("%s\n",artista);
-
   return palabra;
 
 }
 
-void escribir_txt(Map* mapaUsuario){
+void escribir_canciones_txt(Map* mapaCanciones){
+  //reescribe el txt cancion (canciones.txt) con los nuevos datos actualizados (actualizados se refiere a cuando agregamos canciones y sube 1 su puntaje por ejemplo)
+
+  FILE* flujo = fopen("canciones.txt", "w");
+  char* dato;
+  tipoCancion* cancion = (tipoCancion*) malloc(sizeof(tipoUsuario));
+
+  if( flujo == NULL ){
+    perror("Error en la lectura de archivo");
+  }
+  else{
+
+    cancion = firstMap(mapaCanciones);
+
+    while(cancion != NULL){
+      
+      fprintf(flujo, "%s,", cancion->id);
+      fprintf(flujo, "%s,", cancion->nombre);
+      fprintf(flujo, "%s,", cancion->artista);
+      fprintf(flujo, "%s,", cancion->genero);
+      fprintf(flujo, "%s,", cancion->subgenero);
+      fprintf(flujo, "%d\n", cancion->puntaje);
+
+      cancion = nextMap(mapaCanciones);
+    }
+
+    fflush(flujo);
+    fclose(flujo);
+
+  }
+}
+
+void escribir_usuarios_txt(Map* mapaUsuario){
+  //reescribe el txt usuario (usuario.txt) con los nuevos datos actualizados 
 
   FILE* flujo = fopen("usuarios.txt", "w");
   char* dato;
@@ -1034,7 +1076,89 @@ void escribir_txt(Map* mapaUsuario){
     fflush(flujo);
     fclose(flujo);
 
-    printf("TXT SOBRESCRITO");
   }
 
+}
+
+void mostrarArbol( TreeMap* arbolCanciones){
+  //con esta funcion podemos mostrar un arbol con las canciones de nuestra base de datos ordenado de manera alfabetica
+
+  tipoCancion* cancionesMostrar = (tipoCancion*) malloc(sizeof(tipoCancion));
+
+  cancionesMostrar = firstTreeMap(arbolCanciones);
+
+  while ( cancionesMostrar != NULL ){//recorremos el arbol hasta que lleguemos al final
+
+    printf("%s\n", cancionesMostrar->nombre);
+
+    cancionesMostrar = nextTreeMap(arbolCanciones);
+
+  }
+
+}
+
+void explorar_canciones(TreeMap* arbol_canciones, tipoUsuario* usuarioIngreso){
+  //en esta funcion mostramos un arbol ordenado alfabeticamente con las canciones de nuestra base de datos y el usuario puede agregarlas a su lista de canciones favoritas o salir de la opcion
+  
+  mostrarArbol(arbol_canciones);
+  printf("\n");
+
+  int op;
+  char* cancion;
+
+  tipoCancion * busqueda_cancion = firstTreeMap(arbol_canciones);
+
+  while(1){
+
+    printf("EXPLORAR\n");
+    printf("1.Agregar cancion a mi lista\n");
+    printf("2.Atras\n");
+    printf("Escriba el numero de la opcion: ");
+    scanf("%i", &op);
+    //system("@cls||clear");
+
+    switch(op){
+
+      case 1:
+        //AGREGAR CANCION A LA LISTA USUARIO
+        printf("Escribe la cancion que quieres agregar:\n");
+        cancion = leerCharEspacio(cancion);
+        system("@cls||clear");
+        
+        busqueda_cancion = searchTreeMap(arbol_canciones, cancion); //me coloco en el primer dato del mapa canciones
+
+          if(strcmp(cancion, busqueda_cancion->nombre) == 0){
+            
+            busqueda_cancion->puntaje++;//se le suma uno al puntaje de la cancion
+            
+            list_push_back(usuarioIngreso->canciones_favoritas, busqueda_cancion->nombre);
+            //se agrega a la lista de canciones favoritas del usuario
+
+            printf("Cancion agregada Exitosamente !!!\n");
+            printf("{-------------------------------}\n\n");
+            break;
+
+          }
+        
+        if (busqueda_cancion == NULL) printf("La cancion que está intentando agregar no existe :(\n");
+        break;
+
+      case 2:
+        //ATRAS
+        system("@cls||clear");
+        break;
+
+      default:
+
+        system("@cls||clear");
+        printf("Opcion invalida\n");
+        op = 2;
+        break;
+
+    }
+
+    if ( op == 2 ) break;
+
+  }
+  
 }

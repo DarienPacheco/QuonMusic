@@ -5,6 +5,7 @@
 #include "funciones.h"
 #include "list.h"
 #include "map.h"
+#include "treemap.h"
 
 /*
   función para comparar claves de tipo string
@@ -21,6 +22,11 @@ int is_equal_string(void * key1, void * key2) {
 */
 int lower_than_string(void * key1, void * key2) {
     if(strcmp((char*)key1, (char*)key2) < 0) return 1;
+    return 0;
+}
+
+int higher_than_string(void * key1, void * key2) {
+    if(strcmp((char*)key1, (char*)key2) > 0) return 1;
     return 0;
 }
 
@@ -41,9 +47,17 @@ int lower_than_int(void * key1, void * key2) {
     if(*(int*)key1 < *(int*)key2) return 1;
     return 0;
 }
+/*
+  función para comparar claves de tipo int
+  retorna 1 si son key1>key2
+*/
+int higher_than_int(void * key1, void * key2) {
+    if(*(int*)key1 > *(int*)key2) return 1;
+    return 0;
+}
 
 int main(){
-
+    //a continuación se declaran las variables a utilizar en el programa
     int op;
     int opInicioSesion;
     int opMenu;
@@ -59,29 +73,28 @@ int main(){
     char* input;
     char* artistaRecomEscogido;
 
+
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
     tipoUsuario* usuarioIngreso = (tipoUsuario*) malloc(sizeof(tipoUsuario));
 
-    regUsuario = (char*) malloc(sizeof(char)); //cambie todos los sizeof parentesis
+    regUsuario = (char*) malloc(sizeof(char)); 
     regContra = (char*) malloc(sizeof(char));
 
     inicioUsuario = (char*) malloc(sizeof(char));
     inicioContrasena = (char*) malloc(sizeof(char));
 
-    //input = (char*) malloc(sizeof(input));
     artistaRecomEscogido = (char*) malloc(sizeof(char));
 
+    //a continuación se crean las estructuras de datos utilizadas
     Map *mapaCanciones = createMap(is_equal_int);
     Map *mapaArtista = createMap(is_equal_string);
     Map *mapaGenero = createMap(is_equal_string);
     Map *mapaUsuario = createMap(is_equal_string);
+    TreeMap *arbol_canciones = createTreeMap(lower_than_string);
+    TreeMap *arbolTop10 = createTreeMap(higher_than_int);
 
-    llenarBD(mapaCanciones, mapaUsuario, mapaArtista, mapaGenero);
-    //mostrarMapaUsuario(mapaUsuario);
-    //mostrarMapaCanciones(mapaCanciones);
-    //mostrarMapaArtista(mapaArtista);
-    //mostrarMapaGenero(mapaGenero);
-
+    llenarBD(mapaCanciones, mapaUsuario, mapaArtista, mapaGenero, arbol_canciones, arbolTop10);
+    
     while(1){//Muestra el menu
 
         printf("---------------------QUON MUSIC---------------------\n");
@@ -90,7 +103,7 @@ int main(){
         printf("--------------------0. Salir------------------------\n");
         printf("Escriba el numero de la opcion: ");
         scanf("%i", &op);
-        system("clear");
+        system("@cls||clear");
 
 
         switch (op){
@@ -124,40 +137,40 @@ int main(){
 
               mostrarMapaArtistaRegistro(mapaArtista);
 
-              printf("Ingrese seleccion:\n");
+              printf("Ingrese nombre de artista:\n");
               printf("Artista 1: ");
-              //scanf("%s", regArtista_1);
+              
               regArtista_1 = leerCharEspacio(regArtista_1);
               printf("Artista 2: ");
-              //scanf("%s", regArtista_2);
+              
               regArtista_2 = leerCharEspacio(regArtista_2);
 
-              //printf("Ingrese n de artista:\n");
+              
 
               printf("\nSeleccione 2 generos:\n\n");
 
               mostrarMapaGeneroRegistro(mapaGenero);
 
-              printf("\nIngrese seleccion:\n");
+              printf("\nIngrese nombre de genero:\n");
               printf("Genero 1: ");
-              //scanf("%s", regGenero_1);
+              
               regGenero_1 = leerCharEspacio(regGenero_1);
               printf("Genero 2: ");
-              //scanf("%s", regGenero_2);
+              
               regGenero_2 = leerCharEspacio(regGenero_2);
 
               usuarioRegistro = crearUsuario(regUsuario, regContra, regArtista_1, regArtista_2, regGenero_1, regGenero_2);
 
               insertMap(mapaUsuario, usuarioRegistro->nombre, usuarioRegistro);
+              escribir_usuarios_txt(mapaUsuario);
 
-              //mostrarMapaUsuario(mapaUsuario);
-              system("clear");
+              system("@cls||clear");
 
               printf("SE HA REGISTRADO CORRECTAMENTE\n");
 
             }else{
 
-              system("clear");
+              system("@cls||clear");
               printf("ESTE USUARIO YA SE ENCUENTRA REGISTRADO\n");
 
             }
@@ -174,23 +187,11 @@ int main(){
                 scanf("%s", inicioUsuario);//scanf() del nombre de usuario
 
                 usuarioIngreso = searchMap(mapaUsuario, inicioUsuario);
-                         
+        
                 printf("Ingrese contrasena:\n");
                 scanf("%s", inicioContrasena);
-/*
-                printf("%s\n",usuarioIngreso->nombre);
-                
-                canciones = list_first(usuarioIngreso->canciones_favoritas);
 
-                while(canciones != NULL){
-                  printf("%s, ", canciones);
-                  canciones = list_next(usuarioIngreso->canciones_favoritas);
-                }
-                printf("\n");
-                */
-
-    
-                system("clear");
+                system("@cls||clear");
 
                 if( (strcmp (inicioContrasena, usuarioIngreso->contrasena)) == 0 ){
                   /**inicio de sesion valido, entra al menu principal de la aplicacion**/
@@ -209,7 +210,7 @@ int main(){
                         printf("0.Salir\n");
                         printf("Escriba el numero de la opcion: ");
                         scanf("%i", &opMenu);
-                        system("clear");
+                        system("@cls||clear");
 
                         switch(opMenu){
 
@@ -219,12 +220,15 @@ int main(){
 
                         case 1:
 
-                            printf("EXPLORAR CANCIONES\n");
+                            //EXPLORAR CANCIONES
+                            explorar_canciones(arbol_canciones, usuarioIngreso);
+                            escribir_usuarios_txt(mapaUsuario);
+                            escribir_canciones_txt(mapaCanciones);
                             break;
 
                         case 2:
 
-                          //opRecomendar = (int) malloc(sizeof(opRecomendar)); 
+                          
 
                             while(1) {
 
@@ -237,7 +241,7 @@ int main(){
                               printf("Escriba el numero de la opcion: ");
                               scanf("%i", &opRecomendar);
 
-                              system("clear");
+                              system("@cls||clear");
 
                               switch(opRecomendar){
 
@@ -257,6 +261,8 @@ int main(){
                                     printf("Escriba el numero de la opcion: ");
                                     scanf("%i", &opRecomendar);
 
+                                    system("@cls||clear");
+
                                     switch(opRecomendar){
 
                                       case 0:
@@ -266,7 +272,7 @@ int main(){
                                       case 1:
 
                                         printf("RECOMENDACION DE ARTISTAS\n");
-                                        //arreglar caso en que se repita el genero
+                                       
                                         recomendacion_de_artistas(mapaArtista, usuarioIngreso);
                                         
                                         break;
@@ -278,10 +284,7 @@ int main(){
                                         break;
 
                                       case 3:
-
-                                        printf("Atras\n");
-                                        //porque está top 10 aqui?
-                                        //tipoCancion * cancionTop = malloc(size_t __size)
+                                        
                                         break;
 
                                       default:
@@ -320,19 +323,8 @@ int main(){
                                         input = (char*) malloc(sizeof(char)*100);
 
                                         printf("Ingrese un genero de música para recibir una recomendacion:\n");
-                                        //getchar();
-                                        /**fflush(stdin);
-                                        scanf("%s",input);
-                                        getchar();
-                                        printf("%s", input);
-                                        cancion_por_genero(input, mapaGenero);**/
-
+                                 
                                         input = leerCharEspacio(input);
-
-                                        //podrias borrar eso y ocupar la funcione
-                                        //lo dejare comentado aca abajo
-                                        //en teoria deberia funcionar igual que el de arriba
-                                        /**input = leerCharEspacio(input);**/
 
                                         cancion_por_genero(input, mapaGenero);
 
@@ -369,7 +361,21 @@ int main(){
 
                                 case 3:
 
-                                  printf("TOP 10\n");
+                                  system("@cls||clear");
+                                  printf("Este es el TOP 10 de las canciones más populares del momento\n");
+                                  printf("{-------------------------------}\n");
+                                  int contTop = 0;
+                                  
+                                  tipoCancion *topCancion = firstTreeMap (arbolTop10);
+
+                                  while (contTop<10 && topCancion != NULL){//Se definen las condiciones para que las canciones entren al top
+
+                                    printf("%d.-%s - %s\n",contTop+1,topCancion->nombre, topCancion->artista );
+                                    topCancion = nextTreeMap(arbolTop10);
+                                    contTop++;
+
+                                  }
+                                  printf("{-------------------------------}\n\n");
 
                                   break;
 
@@ -395,28 +401,28 @@ int main(){
 
                             printf("CANCIONES\n");
                             canciones_del_usuario(mapaUsuario, mapaCanciones, usuarioIngreso);
-                            escribir_txt(mapaUsuario);
+                            escribir_usuarios_txt(mapaUsuario);
+                            escribir_canciones_txt(mapaCanciones);
                             break;
 
                         case 4:
 
                             printf("ARTISTAS\n");
                             artistas_del_usuario(mapaUsuario, mapaArtista, usuarioIngreso);
+                            escribir_usuarios_txt(mapaUsuario);
                             break;
 
                         case 5:
 
                             printf("GENEROS\n");
                             generosdelUsuario(mapaUsuario, mapaGenero, usuarioIngreso);
-                            
+                            escribir_usuarios_txt(mapaUsuario);
                             break;
 
                         case 6:
 
                             printf("CERRAR SESION\n");
-                            //inicioUsuario =
-                            //inicioContrasena = 
-                            //usuarioIngreso =
+                            
                             break;
 
                         default:
@@ -426,10 +432,7 @@ int main(){
 
                         }
 
-                        if (opMenu == 6) break;//falta limpiar los datos de inicio de sesion
-                        //break;
-
-
+                        if (opMenu == 6) break;
                     }
 
                 }else{
@@ -453,4 +456,3 @@ int main(){
 
     return 0;
 }
-

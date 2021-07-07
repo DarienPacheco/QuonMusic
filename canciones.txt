@@ -2,40 +2,40 @@
 2,Dancing queen,ABBA,Pop,Disco,1
 3,Gimme gimme gimme!,ABBA,Pop,Disco,1
 4,Someone like you,Adele,Soul,Pop,1
-5,Hello,Adele,Soul,Pop,1
+5,Hello,Adele,Soul,Pop,6
 6,I dont to miss a thing,Aerosmith,Power ballad,Rock,1
 7,Dream on,Aerosmith,Hard rock,Progressive rock,1
 8,Take on me,A-ha,Synth pop,New wave,1
 9,Forever young,Alphaville,Power ballad,New wave,1
 10,Big in Japan,Alphaville,Synth pop,New wave,1
-11,Back to black,Amy Winehouse,R&B,Soul,1
-12,Rehab,Amy Winehouse,R&B,Soul,1
-13,Cant get enough of your love babe,Soul,Disco,1
+11,Back to black,Amy Winehouse,R&B,Soul,2
+12,Rehab,Amy Winehouse,R&B,Soul,3
+13,Cant get enough of your love babe,Barry White,Soul,Disco,1
 14,Bela Lugosis dead,Bauhaus,Post-punk,Gothic,1
-15,Sabotage,Beastie Boys,Rap rock,HipHop,1
+15,Sabotage,Beastie Boys,Rap rock,HipHop,2
 16,Intergalactic,Beastie Boys,HipHop,HipHop,1
-17,Stayin alive,Bee Gees,Disco,Disco,1
-18,Night fever,Bee Gees,Disco,Disco,1
+17,Stayin alive,Bee Gees,Disco,Disco,2
+18,Night fever,Bee Gees,Disco,Disco,3
 19,Crazy in love,Beyonce,R&B,HipHop,1
 20,Rebel Yell,Billy Idol,Hard rock,New wave,1
 21,Dancing with myself,Billy Idol,New wave,New wave,1
-22,Piano man,Billy Joel,Soft rock,Soft rock,1
+22,Piano man,Billy Joel,Soft rock,Soft rock,5
 23,Uptown girl,Billy Joel,Pop-rock,Pop-rock,1
 24,Raindrops keep fallin on my head,B.J Thomas,Soft rock,Pop,1
 25,Kill this love,BlackPink,K-pop,HipHop,1
 26,How you like that,BlackPink,K-pop,EDM,1
 27,Paranoid,Black Sabbath,Heavy metal,Hard rock,1
 28,Iron man,Black Sabbath,Heavy metal,Hard rock,1
-29,Heart of glass,Blondie,New wave,Disco,1
+29,Heart of glass,Blondie,New wave,Disco,2
 30,Maria,Blondie,Pop-rock,New wave,1
-31,Girls & Boys,Blur,Brit-pop,Brit-pop,1
+31,Girls & Boys,Blur,Brit-pop,Brit-pop,3
 32,Country house,Blur,Brit-pop,Indie,1
 33,Like a rolling stone,Bob Dylan,Folk,Folk,1
 34,Knockin on heavens door,Bob Dylan,Folk,Blues,1
-35,Three little birds,Bob Marley,Reggae,Reggae,1
-36,No woman no cry,Bob Marley,Reggae,Reggae,1
+35,Three little birds,Bob Marley,Reggae,Reggae,2
+36,No woman no cry,Bob Marley,Reggae,Reggae,2
 37,Rasputin,BoneyM,Disco,Disco,1
-38,Rivers of Babylon,BoneyM,Disco,Disco,1
+38,Rivers of Babylon,BoneyM,Disco,Disco,2
 39,Living on a prayer,Bon Jovi,Glam metal,Hard rock,1
 40,Always, Bon Jovi,Power ballad,Hard rock,1
 41,Summer of 69,Brian Adams,Rock,Hard rock,1
@@ -97,7 +97,7 @@
 97,The final countdown,Europe,Glam metal,Hard rock,1
 98,Carrie,Europe,Power ballad,Glam metal,1
 99,Kaikai kitan,Eve,J-pop,J-pop,1
-100,Dreams,Fleetwood Mac,Soft rock,Soft rock,1
+100,Inochi no tabekata,Eve,J-pop,J-pop,1
 101,Everywhere,Fleetwood Mac,Soft rock,Pop-rock,1
 102,Pink + white,Frank Ocean,R&B,HipHop,1
 103,Chanel,Frank Ocean,R&B,HipHop,1
@@ -107,7 +107,7 @@
 107,Down in the park,Gary Numan,Post-punk,New wave,1
 108,Invisible touch,Genesis,Progressive rock,Pop-rock,1
 109,My sweet lord,George Harrison,Folk,Folk,1
-110,Give me love,George Harrison,Folk, Folk,1
+110,Give me love,George Harrison,Folk,Folk,1
 111,Careless whisper,George Michaels,Pop-rock,Soft rock,1
 112,I will survive,Gloria Gaynor,Disco,Disco,1
 113,Alone,Heart,Hard rock,Hard rock,1
@@ -127,8 +127,8 @@
 127,Ring of fire,Johnny Cash,Country,Country,1
 128,Imagine,John Lennon,Soft rock,Soft rock,1
 129,Woman,John Lennon,Rock,Rock,1
-130,Slow dancing in the dark,Joji,R&B,Soul,1
-131,Yeah right,Joji,R&B,Lo-fi,1
+130,Slow dancing in the dark,Joji,R&B,Soul,2
+131,Yeah right,Joji,R&B,Lo-fi,2
 132,Love will tear us apart,Joy Division,Post-punk,Post-punk,1
 133,Disorder,Joy Division,Post-punk,Post-punk,1
 134,Painkiller,Judas Priest,Heavy metal,Heavy metal,1
@@ -173,7 +173,7 @@
 173,Billie Jean,Michael Jackson,Disco,Funk,1
 174,Beat it,Michael Jackson,Pop-rock,Dance,1
 175,Stay with me,Miki Matsubara,J-pop,J-pop,1
-176,Suedehead, Morrissey, Alternative rock, Brit-pop,1
+176,Suedehead,Morrissey,Alternative rock,Brit-pop,1
 177,I know its gonna happen someday,Morrissey,Glam,Alternative rock,1
 178,Kickstart my heart,Motley Crue,Glam metal,Heavy metal,1
 179,Home sweet home,Motley Crue,Power ballad,Glam metal,1
@@ -182,7 +182,7 @@
 182,99 Luftballons,Nena,Pop-rock,New wave,1
 183,Blue Monday,New order,Synth pop,EDM,1
 184,Feeling good,Nina Simone,Soul,Jazz,1
-185,Wild is the wind,Nina Simone,Soul,Blues,1
+185,Wild is the wind,Nina Simone,Soul,Blues,2
 186,Smells like teen spirit,Nirvana,Grunge,Alternative rock,1
 187,Heart-shaped box,Nirvana,Grunge,Alternative rock,1
 188,Wonderwall,Oasis,Brit-pop,Alternative rock,1
@@ -190,7 +190,7 @@
 190,Stay,Oingo Boingo,Ska,Ska,1
 191,Not my slave,Oingo Boingo,Ska,Pop-rock,1
 192,Enola gay,Orchestral Manoeuvres in the Dark,Synth pop,New wave,1
-193,You can call me Al,Paul Simon,Folk,Rock,1 
+193,You can call me Al,Paul Simon,Folk,Rock,1
 194,Graceland,Paul Simon,Folk,Folk,1
 195,Always on my mind,Pet Shop Boys,Synth pop,Pop,1
 196,Domino dancing,Pet Shop Boys,Synth pop,Synth pop,1
@@ -236,54 +236,55 @@
 236,This must be the place,Talking Heads,Art-rock,Art-rock,1
 237,The less I know the better,Tame Impala,Psychedelic rock,Indie,1
 238,Feels like we only go backwards,Tame Impala,Psychedelic rock,Indie,1
-239, Everybody wants to rules the world, Tears for Fears, Pop-rock, New wave, 1
-240, Mad world, Tears for Fears, Synth pop, New wave, 1
-241, I love to love, Tina Charles, Disco, Pop, 1
-242, Eye in the sky, The Alans Parsons Project, Art-rock, Soft rock, 1
-243, Wouldnt it be nice, The Beach Boys, Psychedelic rock, Pop, 1
-244, Eternal flames, The Bangles, Soft rock, Soft rock, 1
-245, Walk like an Egyptian, The Bangles, Pop-rock, Pop-rock, 1
-246, Help!, The Beatles, Rock, Folk, 1
-247, Penny Lane, The Beatles, Psychedelic rock, Pop, 1
-248, Video killed the radio star, The Buggles, New wave, Synth pop, 1
-249, Should stay or should I go, The Clash, Punk, Punk, 1
-250, I forgot the law, The Clash, Punk, Punk, 1
-251, Just like heaven, The Cure, Alternative rock, Post-punk, 1
-252, Charlotte sometimes, The Cure, Gothic, Post-punk, 1
-253, Zombie, The Cranberries, Alternative rock, Alternative rock, 1
-254, Just my imagination, The Cranberries, Alternative rock, Indie, 1
-255, Light my fire, The Doors, Psychedelic rock, Psychedelic rock, 1
-256, Touch me, The Doors, Psychedelic rock, Soul, 1
-257, Yoshimi battles the pink robots pt.1, The Flaming Lips, Psychedelic rock, Indie, 1
-258, Thats entertainment, The Jam, Alternative rock, Punk, 1
-259, Going underground, The Jam, Punk, New wave, 1
-260, Mr. Brightside, The Killers, Alternative rock, Post-punk, 1
-261, When you were young, The Killers, Alternative rock, Post-punk, 1
-262, Hypnotize, The Notorious B.I.G, Rap, HipHop, 1
-263, Big poppa, The Notorious B.I.G, Rap, HipHop, 1
-264, Every breath you take, The Police, Pop-rock, New wave, 1
-265, So lonely, The Police, Reggae, New wave, 1
-266, Paint it back, The Rolling Stones, Psychedelic rock, Rock n Roll, 1
-267, (I cant get no) Satisfaction, The Rolling Stones, Rock n Roll, Hard rock, 1
-268, This charming man, The Smiths, Post-punk, Alternative rock, 1
-269, How soon is now?, The Smiths, Indie, Post-punk, 1
-270, I wanna be adored, The Stone Roses, Alternative rock, Indie, 1
-271, Sunday morning, The Velvet Underground & Nico, Art-rock, Pop, 1
-272, Bitter sweet symphony, The Verve, Brit-pop, Alternative rock, 1
-273, History, The Verve, Brit-pop, Alternative rock, 1
-274, Blinding lights, The Weeknd, Synth pop, Synth pop, 1
-275, Save your tears, The Weeknd, Synth pop, R&B, 1
-276, Baba O Riley, The Who, Hard rock, Art-rock, 1
-277, My generation, The Who, Hard rock, Punk, 1
-278, 20th Century boy, T.Rex, Glam, Hard rock, 1
-279, Cosmic dancer, T.Rex, Glam, Glam, 1
-280, Stressed out, Twenty-One Pilots, Rap rock, Alternative rock
-281, Heathens, Twenty-One Pilots, Rap rock, Rap rock, 1
-282, Fancy, TWICE, K-pop, HipHop, 1
-283, I cant stop me, TWICE, K-pop, K-pop, 1
-284, Red red wine, UB40, Reggae, Reggae, 1
-285, Kingston town, UB40, Reggae, Reggae, 1
+239,Everybody wants to rules the world,Tears for Fears,Pop-rock,New wave,1
+240,Mad world,Tears for Fears,Synth pop,New wave,1
+241,I love to love,Tina Charles,Disco,Pop,1
+242,Eye in the sky,The Alans Parsons Project,Art-rock,Soft rock,1
+243,Wouldnt it be nice,The Beach Boys,Psychedelic rock,Pop,1
+244,Eternal flames,The Bangles,Soft rock,Soft rock,1
+245,Walk like an Egyptian,The Bangles,Pop-rock,Pop-rock,1
+246,Help!,The Beatles,Rock,Folk,1
+247,Penny Lane,The Beatles,Psychedelic rock,Pop,1
+248,Video killed the radio star,The Buggles,New wave,Synth pop,1
+249,Should stay or should I go,The Clash,Punk,Punk,1
+250,I forgot the law,The Clash,Punk,Punk,1
+251,Just like heaven,The Cure,Alternative rock,Post-punk,1
+252,Charlotte sometimes,The Cure,Gothic,Post-punk,1
+253,Zombie,The Cranberries,Alternative rock,Alternative rock,2
+254,Just my imagination,The Cranberries,Alternative rock,Indie,1
+255,Light my fire,The Doors,Psychedelic rock,Psychedelic rock,1
+256,Touch me,The Doors,Psychedelic rock,Soul,1
+257,Yoshimi battles the pink robots pt.1,The Flaming Lips,Psychedelic rock,Indie,1
+258,Thats entertainment,The Jam,Alternative rock,Punk,1
+259,Going underground,The Jam,Punk,New wave,1
+260,Mr. Brightside,The Killers,Alternative rock,Post-punk,1
+261,When you were young,The Killers,Alternative rock,Post-punk,1
+262,Hypnotize,The Notorious B.I.G,Rap,HipHop,1
+263,Big poppa,The Notorious B.I.G,Rap,HipHop,1
+264,Every breath you take,The Police,Pop-rock,New wave,1
+265,So lonely,The Police,Reggae,New wave,1
+266,Paint it back,The Rolling Stones,Psychedelic rock,Rock n Roll,1
+267,(I cant get no) Satisfaction,The Rolling Stones,Rock n Roll,Hard rock,1
+268,This charming man,The Smiths,Post-punk,Alternative rock,1
+269,How soon is now?,The Smiths,Indie,Post-punk,1
+270,I wanna be adored,The Stone Roses,Alternative rock,Indie,1
+271,Sunday morning,The Velvet Underground & Nico,Art-rock,Pop,1
+272,Bitter sweet symphony,The Verve,Brit-pop,Alternative rock,1
+273,History,The Verve,Brit-pop,Alternative rock,1
+274,Blinding lights,The Weeknd,Synth pop,Synth pop,1
+275,Save your tears,The Weeknd,Synth pop,R&B,1
+276,Baba O Riley,The Who,Hard rock,Art-rock,1
+277,My generation,The Who,Hard rock,Punk,1
+278,20th Century boy,T.Rex,Glam,Hard rock,1
+279,Cosmic dancer,T.Rex, Glam,Glam,1
+280,Stressed out,Twenty-One Pilots,Rap rock,Alternative rock,1
+281,Heathens,Twenty-One Pilots,Rap rock,Rap rock,1
+282,Fancy,TWICE,K-pop,HipHop,1
+283,I cant stop me,TWICE,K-pop,K-pop,1
+284,Red red wine,UB40,Reggae,Reggae,1
+285,Kingston town,UB40,Reggae,Reggae,1
 286,Doctor doctor,UFO,Heavy metal,Hard rock,1
-287,YMCA,Village People,Disco,Disco,1
+287,YMCA,Village People,Disco,Disco,2
 288,Dont go,Yazoo,Synth pop,Synth pop,1
 289,Nobodys diary,Yazoo,Synth pop,New wave,1
+290,Dreams,Fleetwood Mac,Soft rock,Soft rock,1

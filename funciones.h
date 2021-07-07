@@ -5,6 +5,7 @@
 #include <string.h>
 #include "map.h"
 #include "list.h"
+#include "treemap.h"
 
 typedef struct{
 
@@ -55,7 +56,7 @@ void *crearGeneroCSV(char *linea);
 
 tipoUsuario *crearUsuario(char* user, char* contra, char* artista1, char* artista2, char* genero1, char* genero2);
 
-void llenarBD(Map *, Map *, Map *, Map *);
+void llenarBD(Map *, Map *, Map *, Map *, TreeMap*, TreeMap*);
 
 void mostrarMapaUsuario(Map*);
 
@@ -85,6 +86,12 @@ void generosdelUsuario( Map*, Map*, tipoUsuario* );
 
 char* leerCharEspacio( char* );
 
-void escribir_txt(Map*);
+void escribir_canciones_txt(Map*);
+
+void escribir_usuarios_txt(Map*);
+
+void mostrarArbol( TreeMap* );
+
+void explorar_canciones( TreeMap*, tipoUsuario* );
 
 #endif

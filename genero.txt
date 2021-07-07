@@ -17,7 +17,7 @@ Heavy metal,Paranoid,Iron man,Barracuda,The troopers,Wasted years,Painkiller,Cra
 HipHop,Ambitionz az a ridah,Sabotage,Intergalactic,Crazy in love,Kill this love,Stil D.R.E,Whats the difference,Without me,Love the way you lie,Pink + white,Chanel,It was a good day,You know how we do it,Stronger,Power,Hypnotize,Big poppa,Fancy
 House,Mr. Vain,Got to get it,Stronger,Be my lover,Sweet dreams,Scatmans world
 Indie,Country house,True love will find you in the end,Some things last a long time,Evil, Rest my chemistry,Australia street,The less I know the better,Feels like we only go backwards,Just my imagination,Yoshimi battles the pink robots pt.1,How soon is now?,I wanna be adored
-J-pop,Kaikai kitan,Silhouette,Nandemo nedari,Crossing field,Gurenge,Plastic love,Stay with me
+J-pop,Kaikai kitan,inochi no tabekata,Silhouette,Nandemo nedari,Crossing field,Gurenge,Plastic love,Stay with me
 Jazz,Dollar Days,Fly me to the moon,My way,What a wonderful world,L-O-V-E,When I fall in love,Feeling good
 K-pop,Kill this love,How you like that,Dynamite,Butter,Fancy,I cant stop me	
 Lo-fi,True love will find you in the end,Some things last a long time,Yeah right
