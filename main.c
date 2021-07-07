@@ -6,6 +6,7 @@
 #include "list.h"
 #include "map.h"
 #include "treemap.h"
+//#include <conio.h>
 
 /*
   función para comparar claves de tipo string
@@ -73,6 +74,11 @@ int main(){
     char* input;
     char* artistaRecomEscogido;
 
+    /**char caracterRegistro;
+    char caracterInicio;
+    int num1 = 0;
+    int num2 = 0;**/
+
 
     tipoUsuario* usuarioRegistro = (tipoUsuario*) malloc(sizeof(tipoUsuario));
     tipoUsuario* usuarioIngreso = (tipoUsuario*) malloc(sizeof(tipoUsuario));
@@ -126,6 +132,23 @@ int main(){
             scanf("%s", regUsuario);
             printf("Ingrese contrasena sin espacios:\n");
             scanf("%s", regContra);
+
+            /**while ( caracterRegistro = getch() ){
+
+                if ( caracterRegistro == 13 ) {
+
+                    regContra[num1] = '\0';
+                    break;
+
+                } else {
+
+                    printf("*");
+                    regContra[num1] = caracterRegistro;
+                    num1++;
+
+                }
+
+            }**/
 
             usuarioRegistro = searchMap(mapaUsuario, regUsuario);//si el usuario no existe en el mapa, esta variable sigue siendo NULL
 
@@ -190,6 +213,23 @@ int main(){
         
                 printf("Ingrese contrasena:\n");
                 scanf("%s", inicioContrasena);
+
+                /**while ( caracterInicio = getch() ){
+
+                  if ( caracterInicio == 13 ) {
+
+                    regContra[num2] = '\0';
+                    break;
+
+                  } else {
+
+                    printf("*");
+                    regContra[num2] = caracterInicio;
+                    num2++;
+
+                  }
+
+                }**/
 
                 system("@cls||clear");
 

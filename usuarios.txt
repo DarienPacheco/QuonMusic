@@ -1,11 +1,11 @@
 jefte,ponce,Piano man,Hello,Zombie
-BTS,BoneyM,Barry White
+BoneyM,Barry White
 EDM,Rock,Pop,Disco
 ivan,equisde,Stayin alive,No woman no cry,Girls & Boys,Slow dancing in the dark,Yeah right
 Audioslave,Michael Jackson
 New wave,House
 iroh,omniman,Heart of glass,Night fever,Rehab,Hello,Piano man,YMCA
-Blondie,Depeche Mode
+Depeche Mode
 New wave,Disco,Rap,Pop,Soul,Hard rock
 darienBowie,botines69,Girls & Boys,Rivers of Babylon,Sabotage,Wild is the wind
 David Bowie,The Smiths
@@ -14,7 +14,7 @@ a,a,Heart of glass,Night fever,Hello,Piano man,Rehab
 Blondie,Depeche Mode
 New wave,Disco,Rap,Pop,Soul,Hard rock
 prindoxx,4alhabla,Hello,Three little birds,Back to black
-Eve,Kana-Boon
+Eve,LiSA,David Bowie
 Rap,Soul
 pablo,4444,Hello,Piano man
 TWICE,BTS

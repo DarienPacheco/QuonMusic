@@ -552,7 +552,7 @@ void recomendacion_de_artistas(Map* mapaArtista, tipoUsuario* usuarioIngreso){
     }
 
     artista = list_next(usuarioIngreso->artistas_favoritos);
-
+    
   }
 
   artista2 = list_first(lista_artistas);
@@ -755,7 +755,7 @@ void canciones_del_usuario(Map* mapaUsuario, Map* mapaCanciones, tipoUsuario* us
           cancion = list_next(usuarioIngreso->canciones_favoritas);
         }
 
-        if(cancion == NULL) printf("La cancion que ingresó no la tiene agregada\n");
+        if(cancion == NULL) printf("La cancion que ingreso no la tiene agregada\n");
         //printf("La cancion que ingresó no la tiene agregada\n");
 
         break;
@@ -835,7 +835,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
           busqueda_artista = nextMap(mapaArtista);
           
         }
-        if (busqueda_artista == NULL) printf("El artista que está intentando agregar no existe :(\n");
+        if (busqueda_artista == NULL) printf("El artista que esta intentando agregar no existe :(\n");
 
         break;
 
@@ -858,7 +858,7 @@ void artistas_del_usuario(Map* mapaUsuario, Map* mapaArtista, tipoUsuario* usuar
           artista = list_next(usuarioIngreso->artistas_favoritos);
         }
 
-        if(artista == NULL) printf("El artista que ingresó no lo tiene agregado\n");
+        if(artista == NULL) printf("El artista que ingreso no lo tiene agregado\n");
 
         break;
 
